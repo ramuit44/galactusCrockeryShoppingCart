@@ -39,7 +39,7 @@ gem install compass
  *  In order to use Sass & Compass with Grunt we need Ruby and Compass. 
      * Ruby by default  comes for linux and Mac OS X environments.
      * For windows environment Install Ruby using the Ruby Installer [http://rubyinstaller.org/](Ruby Installer) and include the {ruby installated directory path}/bin in the path.
-     * Install compass using the command `gem install compass'.
+     * Install compass using the command `gem install compass`.
 
 ### Preparing
  * Run `bower install` to download your web app dependencies described in bower.json to `app/bower_components`.
