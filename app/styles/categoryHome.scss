@@ -1,0 +1,58 @@
+
+$header-height: 330px;
+$textblock-width: 550px;
+/* Larger than phablet */
+
+
+.header-container{
+  height: $header-height;
+
+  background-image: url("../images/plates-header.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+
+  .textblock {
+    padding: 0px 10px;
+    height: $header-height;
+    margin: 0 auto;
+    width: $textblock-width;
+
+    color: white;
+    text-align: center;
+    background: #3b3d38;
+
+    border-style: solid;
+    border-color: white;
+    border-width: 0 10px;
+
+    .wrapper {
+      padding-top:70px;
+    }
+
+    h1 span {
+      border-bottom: solid white 1px;
+      padding-bottom: 1rem;
+      font-family: "Times New Roman", Georgia, Serif;
+    }
+
+    p {
+      padding : 15px 5px 0px 5px;
+    }
+
+    @media (max-width: 550px) {
+      width: auto;
+      border-width: 0;
+      margin: 0px;
+    }
+
+  }
+}
+
+
+.product-list-container {
+  padding-top: 2em;
+  product-thumb-nail:nth-child(3n-2){
+    margin-left: 0px;
+  }
+}

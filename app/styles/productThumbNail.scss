@@ -1,0 +1,62 @@
+:host {
+  text-align: center;
+  font-size: 80%;
+}
+
+product-thumb-nail {
+  text-align: center;
+  font-size: 80%;
+ 
+  .productBox{
+    max-width: 100%;
+    box-sizing: border-box;
+   
+  }
+}
+
+
+
+.title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $dark-grey;
+}
+
+.brand, .title {
+  margin-bottom: 1rem;
+}
+
+// Image and overlay
+.image-container {
+  position: relative;
+
+  img {
+    z-index: 1;
+  }
+
+  .overlay {
+    z-index: -1;
+    transition: opacity .3s ease-out;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+:host:hover .overlay {
+  z-index: 2;
+  opacity: 1;
+}
+
+.product-list-container {
+  padding-top: 2em !important;
+  product-thumb-nail:nth-child(3n-2){
+    margin-left: 0px;
+  }
+}
+

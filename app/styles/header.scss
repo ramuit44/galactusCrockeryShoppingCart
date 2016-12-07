@@ -10,6 +10,7 @@ nav.navbar {
   height: $navbar-height;
   color: $dark-grey;
 
+
   position: fixed;
   top: 0;
   width: 100%;
@@ -30,6 +31,7 @@ nav.navbar {
   a.nav-link {
     line-height: $navbar-height;
     cursor: pointer;
+    text-decoration: none !important;
   }
 
   ul {
@@ -54,6 +56,6 @@ nav.navbar {
 
 }
 
-.router-wrapper {
+.content {
   margin-top: $navbar-height;
 }
