@@ -9,6 +9,15 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
 * Weather-icons from http://erikflowers.github.io/weather-icons  - for stylign weather widget with weather icons
 * Bower - package manager for the solution , resolving any required library dependencies.
 * Grunt - Task runner tool for building the project and running app on static server and tests on Karma.
+* Ruby & Compass - In order to use Sass with Grunt and convert scss files to minified css,  Ruby and Compass were required.
+
+Here’s how you can get started:
+
+Windows
+
+Install Ruby using the Ruby Installer
+Install Compass. Open command prompt and run the following command:
+gem install compass
 
 ## Code organization
 * This project's sources are located in the app directory.
@@ -27,10 +36,15 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
  * Install npm by installing NodeJs.
  * Install bower using  `npm install -g bower`.
  * Install grunt-cli globally using `npm install -g grunt-cli`.
+ *  In order to use Sass & Compass with Grunt we need Ruby and Compass. 
+     * Ruby by default  comes for linux and Mac OS X environments.
+     * For windows environment Install Ruby using the Ruby Installer [http://rubyinstaller.org/](Ruby Installer) and include the {ruby installated directory path}/bin in the path.
+     * Install compass using the command `gem install compass'.
 
 ### Preparing
  * Run `bower install` to download your web app dependencies described in bower.json to `app/bower_components`.
  * Run `npm install` once to install the components described in `package.json`, required to run `grunt`. This might take a while :)
+ *
  
 ### Building
 
