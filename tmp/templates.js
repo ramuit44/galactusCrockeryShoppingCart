@@ -100,8 +100,10 @@ angular.module("index.html", []).run(["$templateCache", function($templateCache)
     "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
     "  <link rel=\"stylesheet\" type=\"text/css\" href=\"bower_components/bootstrap/dist/css/bootstrap.css\"/>\n" +
     "  <link rel=\"stylesheet\" type=\"text/css\" href=\"../dist/app.css\"/>\n" +
+    "  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>\n" +
     "  <script type=\"text/javascript\" src=\"bower_components/angular/angular.js\"></script>\n" +
     "  <script type=\"text/javascript\" src=\"bower_components/angular-sanitize/angular-sanitize.js\"></script>\n" +
+    "\n" +
     "\n" +
     "</head>\n" +
     "<body ng-app=\"\">\n" +
