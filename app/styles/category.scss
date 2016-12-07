@@ -1,0 +1,59 @@
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+$navbar-height: 70px;
+
+nav.navbar {
+  height: $navbar-height;
+  color: $dark-grey;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  z-index: 100;
+
+  border-bottom: solid $border-color 1px;
+  text-align: center;
+
+  .logo-container {
+    float:left;
+  }
+  .menu-container {
+    float: right;
+    margin-right: 18px;
+  }
+
+  a.nav-link {
+    line-height: $navbar-height;
+    cursor: pointer;
+  }
+
+  ul {
+    margin:0;
+    text-align: center;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin-right: 2.2rem;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+
+  // Mobile menu icon
+  .mobile-menu {
+    font-size: 3rem;
+    line-height: $navbar-height;
+  }
+
+}
+
+.router-wrapper {
+  margin-top: $navbar-height;
+}
