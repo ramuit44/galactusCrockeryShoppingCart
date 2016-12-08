@@ -28,16 +28,28 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
  			}
  		);
 
- 	$scope.addProductToCart = function(id){
+ 	$scope.addProductToCart = function(id,qtyValue){
  		for(var i=0;i<$scope.availiableProducts.length;i++){
  			if($scope.availiableProducts[i].id === id){
  				for(var k=0;k<$scope.selectedProducts.length;k++){
  					if($scope.selectedProducts[k].id === id){
+ 						if(qtyValue){
+ 							$scope.selectedProducts[k].count = $scope.selectedProducts[k].count+qtyValue;
+ 						}
+ 						else{
  						$scope.selectedProducts[k].count = $scope.selectedProducts[k].count+1;
+ 						}
  						return;
  					}
  				}
- 				$scope.availiableProducts[i].count = 1;
+ 				if(qtyValue)
+ 				{
+ 					$scope.availiableProducts[i].count = qtyValue;
+ 				}
+ 				else {
+ 					$scope.availiableProducts[i].count = 1;
+ 				}
+ 				
  				$scope.selectedProducts.push($scope.availiableProducts[i]);  
  			}
  		}
@@ -56,7 +68,7 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
 }]);
 
 
-;angular.module('templates-main', ['category/categoryHome.html', 'header/header.html', 'index.html', 'productDetails/productDetails.html', 'productThumbNail/productThumbNail.html']);
+;angular.module('templates-main', ['category/categoryHome.html', 'checkoutPopup/checkoutPopup.html', 'header/header.html', 'index.html', 'productDetails/productDetails.html', 'productThumbNail/productThumbNail.html']);
 
 angular.module("category/categoryHome.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("category/categoryHome.html",
@@ -89,6 +101,48 @@ angular.module("category/categoryHome.html", []).run(["$templateCache", function
     "</div>");
 }]);
 
+angular.module("checkoutPopup/checkoutPopup.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("checkoutPopup/checkoutPopup.html",
+    "<div ng-repeat=\"product in products\" class=\"cart-item\">\n" +
+    "\n" +
+    "  <img src=\"images/{{product.image}}\">\n" +
+    "  <a class=\"remove-icon noselect\" href=\"#\" title=\"Remove\"\n" +
+    "          ng-click=\"removeProductFromCart(product.id)\">X</a>\n" +
+    "  <p class=\"strong\">\n" +
+    "    {{product.title}}</p>\n" +
+    "  <p class=\"checkoutProductCount\">\n" +
+    "    x {{product.count}}</p>\n" +
+    "  <p class=\"checkoutProductBrand\">\n" +
+    "    {{product.brand}}</p>\n" +
+    "  <p class=\"checkoutProductPrice\">\n" +
+    "    {{product.price | currency:USD}}</p>\n" +
+    "\n" +
+    "  \n" +
+    "</div>\n" +
+    "<div ng-if=\"products.length == 0\" class=\"cart-item\">\n" +
+    "  <br>\n" +
+    "  <p>The cart is empty.</p>\n" +
+    "  <br>\n" +
+    "</div>\n" +
+    "\n" +
+    "<div class=\"actions\">\n" +
+    "  <div>\n" +
+    "    <p class=\"pull-right\">{{getTotal() | currency:USD}}</p>\n" +
+    "    <p>Total</p>\n" +
+    "   \n" +
+    "  </div>\n" +
+    "  <a class=\"button\" routerLink=\"/cart\" (click)=\"close($event)\">View Cart</a>\n" +
+    "  <button class=\"button-primary u-pull-right\"\n" +
+    "    [disabled]=\"products.length === 0\"\n" +
+    "    (click)=\"checkout()\">Checkout</button>\n" +
+    "  \n" +
+    "</div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "");
+}]);
+
 angular.module("header/header.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("header/header.html",
     "<nav class=\"navbar\">\n" +
@@ -98,10 +152,21 @@ angular.module("header/header.html", []).run(["$templateCache", function($templa
     "  </div>\n" +
     "  <div class=\"menu-container\">\n" +
     "\n" +
-    "    <a class=\"nav-link hidden-phone\" (click)=\"toggleCartPopup($event)\">\n" +
+    "    <!--<a class=\"nav-link hidden-phone\" toggle-class=\"active\">\n" +
+    "      MY CART ({{getTotalCountOfProductsAddedToCart()}})\n" +
+    "      <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n" +
+    "    </a>-->\n" +
+    "\n" +
+    "    <a class=\"nav-link hidden-phone\" ng-click=\"isCheckoutPopupOpen = !isCheckoutPopupOpen\">\n" +
     "      MY CART ({{getTotalCountOfProductsAddedToCart()}})\n" +
     "      <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n" +
     "    </a>\n" +
+    "\n" +
+    "    <checkout-popup  products=\"selectedProducts\" ng-class=\"{ 'active': isCheckoutPopupOpen }\" popup-open=\"isCheckoutPopupOpen\">\n" +
+    "\n" +
+    "   </checkout-popup>\n" +
+    "\n" +
+    "\n" +
     "\n" +
     "    <!--<a class=\"mobile-menu visible-phone\">\n" +
     "      <i class=\"fa fa-bars\" aria-hidden=\"true\"></i></a>-->\n" +
@@ -151,7 +216,8 @@ angular.module("index.html", []).run(["$templateCache", function($templateCache)
     "  <script type=\"text/javascript\" src=\"services/productService.js\"></script>\n" +
     "  <script type=\"text/javascript\" src=\"header/headerComponent.js\"></script>\n" +
     "  <script type=\"text/javascript\" src=\"productThumbNail/productThumbNailComponent.js\"></script>\n" +
-    "\n" +
+    "  <script type=\"text/javascript\" src=\"checkoutPopup/checkoutPopupComponent.js\"></script>\n" +
+    "  <script type=\"text/javascript\" src=\"checkoutPopup/toggleClassComponent.js\"></script>\n" +
     "\n" +
     "\n" +
     "</head>\n" +
@@ -201,7 +267,7 @@ angular.module("productDetails/productDetails.html", []).run(["$templateCache", 
     "            <div class=\"noselect\" ng-click=\"decrement()\" >-</div>\n" +
     "        </div>\n" +
     "       </div> \n" +
-    "        <button class=\"button-primary\" (click)=\"addToCart($event)\">Add To Cart</button>\n" +
+    "        <button class=\"button-primary\" ng-click=\"addProductToCart(selectedDetailedProduct.id,qtyValue)\">Add To Cart</button>\n" +
     "      </div>\n" +
     "      \n" +
     "    </div>\n" +

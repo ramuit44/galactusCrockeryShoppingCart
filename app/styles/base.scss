@@ -117,6 +117,19 @@ hr {
   border-top: 1px solid $light-grey;
 }
 
+.nav-link {
+    cursor: pointer;
+    text-decoration: none !important;
+  }
+
+.nav-link:hover {
+    text-decoration: underline !important;
+  }
+
+ .pull-right{
+    float: right !important;
+ } 
+
 
 // Buttons
 //––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -140,6 +153,7 @@ button {
   border: 1px solid $border-color;
   cursor: pointer;
   box-sizing: border-box;
+  font-family:$font-family;
 }
 
 input {

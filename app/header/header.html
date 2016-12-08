@@ -5,10 +5,21 @@
   </div>
   <div class="menu-container">
 
-    <a class="nav-link hidden-phone" (click)="toggleCartPopup($event)">
+    <!--<a class="nav-link hidden-phone" toggle-class="active">
+      MY CART ({{getTotalCountOfProductsAddedToCart()}})
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+    </a>-->
+
+    <a class="nav-link hidden-phone checkoutPopupOpener" ng-click="isCheckoutPopupOpen = !isCheckoutPopupOpen">
       MY CART ({{getTotalCountOfProductsAddedToCart()}})
       <i class="fa fa-caret-down" aria-hidden="true"></i>
     </a>
+
+    <checkout-popup  products="selectedProducts" ng-class="{ 'active': isCheckoutPopupOpen }" popup-open="isCheckoutPopupOpen">
+
+   </checkout-popup>
+
+
 
     <!--<a class="mobile-menu visible-phone">
       <i class="fa fa-bars" aria-hidden="true"></i></a>-->

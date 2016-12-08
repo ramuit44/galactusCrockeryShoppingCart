@@ -28,16 +28,28 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
  			}
  		);
 
- 	$scope.addProductToCart = function(id){
+ 	$scope.addProductToCart = function(id,qtyValue){
  		for(var i=0;i<$scope.availiableProducts.length;i++){
  			if($scope.availiableProducts[i].id === id){
  				for(var k=0;k<$scope.selectedProducts.length;k++){
  					if($scope.selectedProducts[k].id === id){
+ 						if(qtyValue){
+ 							$scope.selectedProducts[k].count = $scope.selectedProducts[k].count+qtyValue;
+ 						}
+ 						else{
  						$scope.selectedProducts[k].count = $scope.selectedProducts[k].count+1;
+ 						}
  						return;
  					}
  				}
- 				$scope.availiableProducts[i].count = 1;
+ 				if(qtyValue)
+ 				{
+ 					$scope.availiableProducts[i].count = qtyValue;
+ 				}
+ 				else {
+ 					$scope.availiableProducts[i].count = 1;
+ 				}
+ 				
  				$scope.selectedProducts.push($scope.availiableProducts[i]);  
  			}
  		}

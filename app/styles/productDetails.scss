@@ -3,11 +3,13 @@
   text-align: center;
   .nav-link {
     line-height: $navbar-height;
-    cursor: pointer;
-    text-decoration: none !important;
     font-size: 13px;
     font-weight: 600;
     font-stretch: extra-expanded;
+  }
+  .nav-link:last-child:hover{
+    text-decoration: none !important;
+    cursor:default;
   }
   .currentNode {
     opacity : 0.7;
