@@ -1,0 +1,84 @@
+.breadcrumbs {
+  padding: 2em 0;
+  text-align: center;
+  .nav-link {
+    line-height: $navbar-height;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-size: 13px;
+    font-weight: 600;
+    font-stretch: extra-expanded;
+  }
+  .currentNode {
+    opacity : 0.7;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+.product-details {
+  text-align: center;
+
+  .title{
+    font-size: 25px;
+    font-family: 'Merriweather', serif;
+    font-weight: 600;
+    text-overflow: initial;
+    overflow:visible;
+    white-space: normal;
+  }
+
+  .actions{
+    width: 315px;
+    margin: 0 auto;
+    .incrdcr, button {
+      float: left;
+    }
+    button {
+      width: 146px;
+      height:55px;
+    }
+  }
+
+  .incrdcr{
+
+      height: 38px;
+      display: inline-block;
+      margin-right: 30px;
+      margin-left: 40px;
+      font-weight:600;
+      font-size:13px;
+    
+    .number, .actions {
+      height: 55px;
+      width: 50px;
+      float: left;
+      text-align: center;
+    }
+    .number {
+      line-height: 55px;
+      background: #eee;
+    }
+    .actions {
+      margin-left: 2px;
+      width: 18px;
+    }
+    .actions div {
+      height: 27px;
+      width: 27px;
+      line-height: 27px;
+      background: #dadada;
+    }
+    .actions div:first-child {
+      margin-bottom: 2px;
+    }
+    .actions div:hover {
+      cursor: pointer;
+      background: #333;
+      color: white;
+    }
+  }
+
+}

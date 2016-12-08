@@ -1,10 +1,12 @@
 <div class="image-container">
   <img class="productBox" src="images/{{product.image}}" alt="{{product.title}}">
   <div class="overlay">
-    <div><a class="button button-primary" routerLink="/product/{{product.id}}">View Details</a></div>
-    <div><button class="button-primary" (click)="addToCart()">Add To Cart</button></div>
+    <div><a class="button button-primary" ui-sref="product({ id: product.id })">View Details</a></div>
+    <div><button class="button-primary" ng-click="addToCart(product.id)">Add To Cart</button></div>
   </div>
 </div>
+<br/>
 <p class="brand" title="{{product.brand}}">{{product.brand}}</p>
 <p class="title" title="{{product.title}}">{{product.title}}</p>
-<h6 class="price">{{product.price | currency:'USD':true}}</h6>
+<p class="brand">{{product.price | currency}}</p>
+<br/>

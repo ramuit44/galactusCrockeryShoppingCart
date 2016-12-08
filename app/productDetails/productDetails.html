@@ -1,0 +1,42 @@
+<div class="container">
+
+  <div class="row">
+      <div class="breadcrumbs">
+        <a class="nav-link" href="/">HOME</a>
+        <span class="nav-link"> / </span>
+        <a class="nav-link" href="#">PLATES</a>
+        <span class="nav-link"> / </span>
+        <span class="nav-link currentNode">{{selectedDetailedProduct.title | uppercase}}</span>
+      </div>
+  </div>
+
+  <div class="row">
+
+    <!-- Image container -->
+    <div class="seven columns">
+      <img class="u-max-full-width" src="images/{{selectedDetailedProduct.image}}" alt="{{selectedDetailedProduct.title}}">
+    </div>
+
+    <!-- Product details -->
+    <div class="five columns product-details">
+      <p class="brand"> {{selectedDetailedProduct.brand}} </p>
+      <p class="title"> {{selectedDetailedProduct.title}} </p>
+      <p class="brand"> {{selectedDetailedProduct.price | currency}} </p>
+      <p class="brand"> {{selectedDetailedProduct.description}} </p>
+      <hr>
+      <div class="actions">
+        <div class="incrdcr">
+        <div class="number noselect"> {{qtyValue}} </div>
+          <div  class="actions">
+            <div class="noselect" ng-click="increment()" ng-init="qtyValue=1">+</div>
+            <div class="noselect" ng-click="decrement()" >-</div>
+        </div>
+       </div> 
+        <button class="button-primary" ng-click="addProductToCart(selectedDetailedProduct.id,qtyValue)">Add To Cart</button>
+      </div>
+      
+    </div>
+
+  </div>
+
+</div>

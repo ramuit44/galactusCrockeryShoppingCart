@@ -92,8 +92,9 @@ body {
 }
 
 nav{
-  font-size: 1em;
+  font-size: 13px;
   font-weight: 600;
+  font-stretch: extra-condensed;
 }
 
 // Links
@@ -115,6 +116,156 @@ hr {
   border-width: 0;
   border-top: 1px solid $light-grey;
 }
+
+
+// Buttons
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.button,
+button {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: $secondary-color;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: $global-radius;
+  border: 1px solid $border-color;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+input {
+  &[type="submit"],
+  &[type="reset"],
+  &[type="button"] {
+    display: inline-block;
+    height: 38px;
+    padding: 0 30px;
+    color: $secondary-color;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: $global-radius;
+    border: 1px solid $border-color;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+}
+
+.button:hover,
+button:hover {
+  color: $dark-grey;
+  border-color: lighten($dark-grey, 33.3%);
+  outline: 0;
+}
+
+input {
+  &[type="submit"]:hover,
+  &[type="reset"]:hover,
+  &[type="button"]:hover {
+    color: $dark-grey;
+    border-color: lighten($dark-grey, 33.3%);
+    outline: 0;
+  }
+}
+
+.button:focus,
+button:focus {
+  color: $dark-grey;
+  border-color: lighten($dark-grey, 33.3%);
+  outline: 0;
+}
+
+input {
+  &[type="submit"]:focus,
+  &[type="reset"]:focus,
+  &[type="button"]:focus {
+    color: $dark-grey;
+    border-color: lighten($dark-grey, 33.3%);
+    outline: 0;
+  }
+}
+
+.button.button-primary,
+button.button-primary {
+  color: #fff;
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+input {
+  &[type="submit"].button-primary,
+  &[type="reset"].button-primary,
+  &[type="button"].button-primary {
+    color: #fff;
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+}
+
+.button.button-primary:hover,
+button.button-primary:hover {
+  color: #fff;
+  background-color: $link-color;
+  border-color: $link-color;
+}
+
+input {
+  &[type="submit"].button-primary:hover,
+  &[type="reset"].button-primary:hover,
+  &[type="button"].button-primary:hover {
+    color: #fff;
+    background-color: $link-color;
+    border-color: $link-color;
+  }
+}
+
+.button.button-primary:focus,
+button.button-primary:focus {
+  color: #fff;
+  background-color: $link-color;
+  border-color: $link-color;
+}
+
+input {
+  &[type="submit"].button-primary:focus,
+  &[type="reset"].button-primary:focus,
+  &[type="button"].button-primary:focus {
+    color: #fff;
+    background-color: $link-color;
+    border-color: $link-color;
+  }
+  &[type="email"],
+  &[type="number"],
+  &[type="search"],
+  &[type="text"],
+  &[type="tel"],
+  &[type="url"],
+  &[type="password"] {
+    height: 38px;
+    padding: 6px 10px; // The 6px vertically centers text on FF, ignored by Webkit
+    background-color: #fff;
+    border: 1px solid lighten($border-color, 8.8%);
+    border-radius: $global-radius;
+    box-shadow: none;
+    box-sizing: border-box;
+  }
+}
+
 
 
 
@@ -305,8 +456,7 @@ $navbar-height: 70px;
 nav.navbar {
   height: $navbar-height;
   color: $dark-grey;
-
-
+  
   position: fixed;
   top: 0;
   width: 100%;
@@ -356,10 +506,91 @@ nav.navbar {
   margin-top: $navbar-height;
 }
 
-:host {
+.breadcrumbs {
+  padding: 2em 0;
   text-align: center;
-  font-size: 80%;
+  .nav-link {
+    line-height: $navbar-height;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-size: 13px;
+    font-weight: 600;
+    font-stretch: extra-expanded;
+  }
+  .currentNode {
+    opacity : 0.7;
+  }
 }
+
+img {
+  width: 100%;
+}
+
+.product-details {
+  text-align: center;
+
+  .title{
+    font-size: 25px;
+    font-family: 'Merriweather', serif;
+    font-weight: 600;
+    text-overflow: initial;
+    overflow:visible;
+    white-space: normal;
+  }
+
+  .actions{
+    width: 315px;
+    margin: 0 auto;
+    .incrdcr, button {
+      float: left;
+    }
+    button {
+      width: 146px;
+      height:55px;
+    }
+  }
+
+  .incrdcr{
+
+      height: 38px;
+      display: inline-block;
+      margin-right: 30px;
+      margin-left: 40px;
+      font-weight:600;
+      font-size:13px;
+    
+    .number, .actions {
+      height: 55px;
+      width: 50px;
+      float: left;
+      text-align: center;
+    }
+    .number {
+      line-height: 55px;
+      background: #eee;
+    }
+    .actions {
+      margin-left: 2px;
+      width: 18px;
+    }
+    .actions div {
+      height: 27px;
+      width: 27px;
+      line-height: 27px;
+      background: #dadada;
+    }
+    .actions div:first-child {
+      margin-bottom: 2px;
+    }
+    .actions div:hover {
+      cursor: pointer;
+      background: #333;
+      color: white;
+    }
+  }
+
+}
+
 
 product-thumb-nail {
   text-align: center;
@@ -368,8 +599,16 @@ product-thumb-nail {
   .productBox{
     max-width: 100%;
     box-sizing: border-box;
+    padding-top: 6px;
    
   }
+}
+
+.brand {
+  font-weight: bold;
+  font-size: inherit;
+  color: $dark-grey;
+  opacity: 0.6;
 }
 
 
@@ -403,10 +642,13 @@ product-thumb-nail {
     transform: translateY(-50%);
     width: 100%;
     opacity: 0;
+    .button{
+      margin-bottom:1em;
+    }
   }
 }
 
-:host:hover .overlay {
+product-thumb-nail:hover .overlay {
   z-index: 2;
   opacity: 1;
 }
