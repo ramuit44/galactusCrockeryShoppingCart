@@ -5,7 +5,7 @@ shoppingCartApp.directive('productThumbNail', ["$compile", function($compile){
    			product: '=',
    			addToCartClick: '&'
 	},
-    templateUrl:'productThumbNail/productThumbNail.html',
+    templateUrl:'app_components/productThumbNail/productThumbNail.html',
     link: function(scope, iElem, iAttr){
 
     	scope.addToCart = function(id){

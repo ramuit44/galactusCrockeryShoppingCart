@@ -1,17 +1,17 @@
-var shoppingCartApp = angular.module("shoppingCartApp",[ "ui.router"]);
+var shoppingCartApp = angular.module("shoppingCartApp",[ "templates-main","ui.router"]);
 
 
 shoppingCartApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/category');
     
     $stateProvider
-        .state('category', {url: '/category', templateUrl: 'category/categoryHome.html'});
+        .state('category', {url: '/category', templateUrl: 'app_components/category/categoryHome.html'});
 
     $stateProvider
-        .state('product', {url: '/product/:id', params: {id: null} , templateUrl: 'productDetails/productDetails.html', controller: 'shoppingCartProductDeatilsCtrl'});    
+        .state('product', {url: '/product/:id', params: {id: null} , templateUrl: 'app_components/productDetails/productDetails.html', controller: 'shoppingCartProductDeatilsCtrl'});    
 
     $stateProvider
-        .state('summary', {url: '/summary', templateUrl: 'shoppingCartSummary/summary.html', controller: 'summaryCtrl'});        
+        .state('summary', {url: '/summary', templateUrl: 'app_components/shoppingCartSummary/summary.html', controller: 'summaryCtrl'});        
        
 }]);
 
@@ -66,7 +66,8 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
  		}
  		return total;
  	};
- 		
+
+ 	 		
 
 }]);
 

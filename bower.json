@@ -1,10 +1,10 @@
 {
-  "name": "galactus-weather-widget-factory",
+  "name": "galactus-shopping-cart-app",
   "version": "0.0.1",
   "authors": [
     "Sriram P aka Galactus"
   ],
-  "description": "Editor Factory to create weather widgets.",
+  "description": "Shopping Cart for awesome Plates.",
   "main": "weatherDirective.js",
   "keywords": [
     "angular",

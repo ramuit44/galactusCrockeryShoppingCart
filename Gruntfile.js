@@ -14,10 +14,7 @@ module.exports = function(grunt) {
     concat: {
         
         jsDist: {
-          options: {
-          separator: ';'
-          },
-          src: ['app/*.js', 'tmp/templates.js'],
+          src: ['app/*.js', 'app/app_components/*/*.js', 'app/services/*.js','tmp/templates.js'],
           dest: 'dist/<%= pkg.name %>.js'
         },
      
@@ -33,9 +30,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.jsDist.dest %>'],
-          'dist/<%= pkg.widgetname %>.min.js':['app/<%= pkg.widgetname %>.js'],
-          'app/<%= pkg.widgetname %>.min.js':['app/<%= pkg.widgetname %>.js']
+          'dist/<%= pkg.name %>.min.js': ['<%= concat.jsDist.dest %>']
         }
       }
     },
@@ -56,7 +51,7 @@ module.exports = function(grunt) {
       dist: {
         expand:true,
         cwd:'app/',
-        src:'*.{html,js,css,eot,svg,ttf,woff}',
+        src:['*.{html,js,css,eot,svg,ttf,woff}','dataStore/**'],
         dest: 'dist/'
       },
       styles: {
@@ -89,8 +84,7 @@ module.exports = function(grunt) {
         options: {
           open: true,
           base: [
-            '.tmp',
-            '<%= target.app %>',
+            'dist',
             '.'
           ]
         }
@@ -107,13 +101,13 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          base: '../<%= target.app %>'
+          base: 'dist'
         }
       }
     },
     //For now 
     jshint: {
-      files: ['Gruntfile.js', 'app/*.js','!app/*.min.js'],
+      files: ['Gruntfile.js', 'app/*.js','!app/*.min.js','app/app_components/*/*.js','tmp/templates.js'],
       options: {
         // options here to override JSHint defaults
         globals: {
@@ -133,15 +127,10 @@ module.exports = function(grunt) {
       },
       minify : {
             expand : true,
-            cwd : 'app/styles',
+            cwd : 'dist',
             src : ['*.css', '!*.min.css'],
-            dest : 'app/styles',
+            dest : 'dist',
             ext : '.min.css'
-      },
-      combine : {
-        files: {
-            'app/styles/app.combined.min.css': ['app/styles/galactus-weather-widget-editor.min.css', 'app/styles/galactus-weather-widget.min.css']
-        }
       }
     },
 
@@ -156,7 +145,7 @@ module.exports = function(grunt) {
        
       },
       main: {
-        src: ['app/**/*.html'],
+        src: ['app/app_components/**/*.html'],
         dest: 'tmp/templates.js'
       },
     },
@@ -199,10 +188,6 @@ module.exports = function(grunt) {
         files:[{
           src:'<%= concat.jsDist.dest %>',
           expand:true
-        },
-        {
-          src:'app/<%= pkg.widgetname %>.js',
-          expand:true
         }
         ]
       }
@@ -243,7 +228,9 @@ module.exports = function(grunt) {
 
  grunt.loadNpmTasks('grunt-contrib-sass');
 
-  grunt.registerTask('default', ['clean','jshint', 'html2js', 'ngAnnotate:dist','concat:jsDist','concat:cssDist' , 'uglify', 'copy', 'cssmin', 'sass']);
+  grunt.registerTask('default', ['clean','jshint', 'html2js', 'concat:jsDist','concat:cssDist', 'ngAnnotate:dist', 'uglify', 'copy', 'sass', 'cssmin']);
+  //grunt.registerTask('default', ['clean', 'html2js', 'concat:jsDist', 'ngAnnotate:dist', 'uglify', 'concat:cssDist', 'copy', 'sass', 'cssmin']);
   //grunt.registerTask('default', ['concat:cssDist' ,'sass']);
+  //grunt.registerTask('default', ['clean','concat:jsDist', 'uglify']);
 
 };

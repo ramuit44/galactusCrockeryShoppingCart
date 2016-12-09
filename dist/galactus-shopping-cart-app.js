@@ -1,17 +1,17 @@
-var shoppingCartApp = angular.module("shoppingCartApp",[ "ui.router"]);
+var shoppingCartApp = angular.module("shoppingCartApp",[ "templates-main","ui.router"]);
 
 
 shoppingCartApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/category');
     
     $stateProvider
-        .state('category', {url: '/category', templateUrl: 'category/categoryHome.html'});
+        .state('category', {url: '/category', templateUrl: 'app_components/category/categoryHome.html'});
 
     $stateProvider
-        .state('product', {url: '/product/:id', params: {id: null} , templateUrl: 'productDetails/productDetails.html', controller: 'shoppingCartProductDeatilsCtrl'});    
+        .state('product', {url: '/product/:id', params: {id: null} , templateUrl: 'app_components/productDetails/productDetails.html', controller: 'shoppingCartProductDeatilsCtrl'});    
 
     $stateProvider
-        .state('summary', {url: '/summary', templateUrl: 'shoppingCartSummary/summary.html', controller: 'summaryCtrl'});        
+        .state('summary', {url: '/summary', templateUrl: 'app_components/shoppingCartSummary/summary.html', controller: 'summaryCtrl'});        
        
 }]);
 
@@ -66,15 +66,191 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
  		}
  		return total;
  	};
- 		
+
+ 	 		
 
 }]);
 
 
-;angular.module('templates-main', ['category/categoryHome.html', 'checkoutPopup/checkoutPopup.html', 'header/header.html', 'index.html', 'productDetails/productDetails.html', 'productThumbNail/productThumbNail.html', 'shoppingCartSummary/summary.html']);
 
-angular.module("category/categoryHome.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("category/categoryHome.html",
+shoppingCartApp.directive('checkoutPopup', ["$compile","$document","productService", function($compile,$document,productService){
+  return {
+    restrict:'E',
+    scope: {
+   			products: '=',
+        popupOpen: '='
+   			
+	},
+    templateUrl:'app_components/checkoutPopup/checkoutPopup.html',
+    link: function(scope, iElem, iAttr){
+
+       scope.getTotal = function(){
+          return productService.getCheckoutProductsPriceTotal(scope.products);
+       };
+
+       scope.removeProductFromCart = function(id){
+          productService.removeProductFromCart(scope.products,id);
+       };
+
+       
+
+       $document.on('click', function (e) {
+          var targetClassName = e.target.className;
+                   if((targetClassName.indexOf('checkoutPopupOpener') !== -1) || (targetClassName.indexOf('removeProductCheckoutPoup') !== -1) ) return;
+                   var buttonclickCondition = iElem[0].contains(e.target) && targetClassName === 'button' ;
+                   if ((iElem !== e.target && !iElem[0].contains(e.target)) || buttonclickCondition) {
+                        scope.$apply(function () {
+                            scope.popupOpen = false;
+                        });
+                    }
+               });
+    	     	
+     }
+
+  };
+}]);
+shoppingCartApp.directive('shoppingCartHeader', ["$compile", function($compile){
+  return {
+    restrict:'E',
+    templateUrl:'app_components/header/header.html',
+    link: function(scope, iElem, iAttr){
+     }
+  };
+}]);
+shoppingCartApp.controller('shoppingCartProductDeatilsCtrl', ['$scope','$stateParams','productService', function($scope,$stateParams,productService) {
+
+	$scope.selectedDetailedProduct = {};
+	$scope.qtyValue = 1;
+	$scope.init = function(){
+		var selectedDetailedProductId = $stateParams.id;
+		for(var i=0;i<$scope.availiableProducts.length;i++){
+ 					if($scope.availiableProducts[i].id == selectedDetailedProductId) {
+ 						$scope.selectedDetailedProduct = $scope.availiableProducts[i];
+
+ 					}
+ 				}
+	};
+
+	$scope.init();
+
+	$scope.decrement = function() {
+            $scope.qtyValue = productService.decrementProductQty($scope.qtyValue);
+   };
+
+      $scope.increment = function() {
+        $scope.qtyValue = productService.incrementProductQty($scope.qtyValue);
+	};
+
+
+
+ 	
+ 		
+
+}]);
+
+shoppingCartApp.directive('productThumbNail', ["$compile", function($compile){
+  return {
+    restrict:'E',
+    scope: {
+   			product: '=',
+   			addToCartClick: '&'
+	},
+    templateUrl:'app_components/productThumbNail/productThumbNail.html',
+    link: function(scope, iElem, iAttr){
+
+    	scope.addToCart = function(id){
+    		scope.addToCartClick({productid:id});
+    	};
+     	
+     }
+
+  };
+}]);
+shoppingCartApp.controller('summaryCtrl', ['$scope','productService', function($scope,productService) {
+
+	$scope.decrementProductQty = function(product) {
+		product.count = productService.decrementProductQty(product.count);
+  	};
+
+      $scope.incrementProductQty = function(product) {
+       	 product.count = productService.incrementProductQty(product.count);
+	};
+
+	$scope.removeProdFromCart = function(id){
+		productService.removeProductFromCart($scope.selectedProducts,id);
+	};
+
+	$scope.getTotal = function(){
+          return productService.getCheckoutProductsPriceTotal($scope.selectedProducts);
+       };
+
+
+}]);
+
+shoppingCartApp.service('productService', ["$http", "$filter", "$window", "$q", "$timeout", function($http, $filter, $window, $q, $timeout) {
+  "use strict";
+    var service = {
+      
+      products: [],
+     
+      getProducts: function() {
+
+        if(this.products.length > 0) return this.products
+
+        var defer = $q.defer();
+
+        $http.get('dataStore/products.json').then(function(response) {
+            defer.resolve(response.data);
+        }, function(response) {
+            defer.reject(response);
+        });
+
+        return defer.promise;
+      },
+
+
+      getCheckoutProductsPriceTotal : function(checkedoutProducts){
+         var total = 0.00;
+          if(checkedoutProducts.length == 0) return total;
+          for(var k=0;k<checkedoutProducts.length;k++){
+            total = (total+ (checkedoutProducts[k].price * checkedoutProducts[k].count));
+          }
+          return total;
+      },
+
+      removeProductFromCart : function(checkedoutProducts,id){
+        for(var k=0;k<checkedoutProducts.length;k++){
+              if(checkedoutProducts[k].id == id){
+                checkedoutProducts.splice(k, 1);
+
+                 
+              }
+          }
+      },
+
+      decrementProductQty : function(quantity) {
+            quantity = quantity - 1;
+            if (quantity < 1){
+              quantity = 1;
+           }
+
+           return quantity;
+      },
+
+      incrementProductQty : function(quantity) {
+           quantity = quantity + 1;
+           return quantity;
+      }
+
+
+    }
+    return service;
+
+}]);
+angular.module('templates-main', ['app_components/category/categoryHome.html', 'app_components/checkoutPopup/checkoutPopup.html', 'app_components/header/header.html', 'app_components/productDetails/productDetails.html', 'app_components/productThumbNail/productThumbNail.html', 'app_components/shoppingCartSummary/summary.html']);
+
+angular.module("app_components/category/categoryHome.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/category/categoryHome.html",
     "<div  class=\"header-container\">\n" +
     "\n" +
     "  <div class=\"textblock\">\n" +
@@ -104,12 +280,12 @@ angular.module("category/categoryHome.html", []).run(["$templateCache", function
     "</div>");
 }]);
 
-angular.module("checkoutPopup/checkoutPopup.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("checkoutPopup/checkoutPopup.html",
+angular.module("app_components/checkoutPopup/checkoutPopup.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/checkoutPopup/checkoutPopup.html",
     "<div ng-repeat=\"product in products\" class=\"cart-item\">\n" +
     "\n" +
     "  <img src=\"images/{{product.image}}\">\n" +
-    "  <a class=\"remove-icon noselect removeProductCheckoutPoup\" href=\"#\" title=\"Remove\"\n" +
+    "  <a class=\"remove-icon noselect removeProductCheckoutPoup\" title=\"Remove\"\n" +
     "          ng-click=\"removeProductFromCart(product.id)\">X</a>\n" +
     "  <p class=\"strong\">\n" +
     "    {{product.title}}</p>\n" +
@@ -146,8 +322,8 @@ angular.module("checkoutPopup/checkoutPopup.html", []).run(["$templateCache", fu
     "");
 }]);
 
-angular.module("header/header.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("header/header.html",
+angular.module("app_components/header/header.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/header/header.html",
     "<nav class=\"navbar\">\n" +
     "\n" +
     "  <div class=\"logo-container\">\n" +
@@ -199,45 +375,8 @@ angular.module("header/header.html", []).run(["$templateCache", function($templa
     "");
 }]);
 
-angular.module("index.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("index.html",
-    "<!doctype html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "  <meta charset=\"utf-8\">\n" +
-    "  <title>Storefront</title>\n" +
-    "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-    "  <link rel=\"stylesheet\" type=\"text/css\" href=\"bower_components/font-awesome/css/font-awesome.min.css\"/>\n" +
-    "  <link rel=\"stylesheet\" type=\"text/css\" href=\"../dist/app.css\"/>\n" +
-    "  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>\n" +
-    "  <link href=\"https://fonts.googleapis.com/css?family=Merriweather\" rel=\"stylesheet\" type='text/css'>\n" +
-    "  <script type=\"text/javascript\" src=\"bower_components/angular/angular.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"bower_components/angular-sanitize/angular-sanitize.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"bower_components/angular-ui-router/release/angular-ui-router.min.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"app.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"services/productService.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"productDetails/productDetailsCtrl.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"shoppingCartSummary/summaryCtrl.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"header/headerComponent.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"productThumbNail/productThumbNailComponent.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"checkoutPopup/checkoutPopupComponent.js\"></script>\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "</head>\n" +
-    "<body ng-app=\"shoppingCartApp\" ng-controller=\"shoppingCartAppCtrl\">\n" +
-    "  <shopping-cart-header></shopping-cart-header>\n" +
-    "  <div class=\"content\">\n" +
-    "    <div ui-view></div>\n" +
-    "  </div>\n" +
-    "</body>\n" +
-    "</html>\n" +
-    "");
-}]);
-
-angular.module("productDetails/productDetails.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("productDetails/productDetails.html",
+angular.module("app_components/productDetails/productDetails.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/productDetails/productDetails.html",
     "<div class=\"container\">\n" +
     "\n" +
     "  <div class=\"row\">\n" +
@@ -283,8 +422,8 @@ angular.module("productDetails/productDetails.html", []).run(["$templateCache", 
     "");
 }]);
 
-angular.module("productThumbNail/productThumbNail.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("productThumbNail/productThumbNail.html",
+angular.module("app_components/productThumbNail/productThumbNail.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/productThumbNail/productThumbNail.html",
     "<div class=\"image-container\">\n" +
     "  <img class=\"productBox\" src=\"images/{{product.image}}\" alt=\"{{product.title}}\">\n" +
     "  <div class=\"overlay\">\n" +
@@ -300,8 +439,8 @@ angular.module("productThumbNail/productThumbNail.html", []).run(["$templateCach
     "");
 }]);
 
-angular.module("shoppingCartSummary/summary.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("shoppingCartSummary/summary.html",
+angular.module("app_components/shoppingCartSummary/summary.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/shoppingCartSummary/summary.html",
     "<div class=\"summaryPage\">\n" +
     "    <div class=\"container\">\n" +
     "      <div class=\"row subtitle\">\n" +
@@ -361,8 +500,7 @@ angular.module("shoppingCartSummary/summary.html", []).run(["$templateCache", fu
     "\n" +
     "            <tr ng-if = \"selectedProducts.length === 0\">\n" +
     "              <td colspan=\"4\" class=\"cart-empty-text\">\n" +
-    "                <h5>Your shopping cart is empty.</h5>\n" +
-    "                <p><a class=\"nav-link\" ui-sref=\"category\">Continue Shopping</a></p>\n" +
+    "                <h5>Empty Cart</h5>\n" +
     "              </td>\n" +
     "            </tr>\n" +
     "\n" +

@@ -130,6 +130,17 @@ hr {
     float: right !important;
  } 
 
+ .bodyNoScroll{
+    overflow:hidden !important;
+    .content{
+       
+        opacity    : 0.7;
+        filter     : alpha(opacity=70);
+        z-index    : 5;
+    }
+    
+ }
+
 
 // Buttons
 //––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -327,6 +338,9 @@ input {
 
 
 
+@import "../app/styles/base.scss";
+@import "../app/styles/grid.scss";
+
 
 $header-height: 330px;
 $textblock-width: 550px;
@@ -386,6 +400,9 @@ $textblock-width: 550px;
   }
 }
 
+@import "../app/styles/base.scss";
+@import "../app/styles/grid.scss";
+
 .checkoutParagraph {
     p {
     overflow: hidden;
@@ -416,6 +433,12 @@ checkout-popup {
 
   background: white;
 
+  max-height:600px;
+  overflow-y:auto;
+
+   opacity: 1 !important;
+
+
   transition: opacity .4s ease-out;
 
   /* Starts hidden by default */
@@ -435,7 +458,7 @@ checkout-popup {
 
 checkout-popup.active{
     top: 100%;
-    opacity: 1;
+    opacity: 1 !important;
   }
 
 
@@ -460,6 +483,7 @@ checkout-popup.active{
 
       .remove-icon:hover {
           opacity:1;
+          cursor:pointer !important;
       }
 
       img {
@@ -487,6 +511,7 @@ checkout-popup.active{
 .actionsProductCheckoutPoup {
   margin-top: 20px;
   padding-top: 6px;
+  padding-bottom: 12px;
   text-align: left;
   @extend .checkoutParagraph;
   border-top:solid #e1e1e1 1px;
@@ -631,6 +656,8 @@ checkout-popup.active{
   clear: both;
 }
 
+@import "../app/styles/base.scss";
+@import "../app/styles/grid.scss";
 
 html, body {
   margin: 0px;
@@ -692,6 +719,9 @@ nav.navbar {
   margin-top: $navbar-height;
 }
 
+@import "../app/styles/base.scss";
+@import "../app/styles/grid.scss";
+
 .breadcrumbs {
   padding: 2em 0;
   text-align: center;
@@ -742,6 +772,8 @@ img {
   
 }
 
+@import "../app/styles/base.scss";
+@import "../app/styles/grid.scss";
 
 product-thumb-nail {
   text-align: center;
@@ -811,6 +843,9 @@ product-thumb-nail:hover .overlay {
   }
 }
 
+
+@import "../app/styles/base.scss";
+@import "../app/styles/grid.scss";
 
 .summaryPage {
   background: #f6f6f6;
@@ -930,7 +965,7 @@ product-thumb-nail:hover .overlay {
           }
           .nav-link{
             @include summaryFont(14px,'Roboto',500,1);
-            text-decoration: underline;
+            text-decoration: underline !important;
           }
         }
 

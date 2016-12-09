@@ -10,7 +10,7 @@ shoppingCartApp.controller('summaryCtrl', ['$scope','productService', function($
 
 	$scope.removeProdFromCart = function(id){
 		productService.removeProductFromCart($scope.selectedProducts,id);
-	}
+	};
 
 	$scope.getTotal = function(){
           return productService.getCheckoutProductsPriceTotal($scope.selectedProducts);

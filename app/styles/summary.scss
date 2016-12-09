@@ -1,3 +1,6 @@
+@import "../app/styles/base.scss";
+@import "../app/styles/grid.scss";
+
 .summaryPage {
   background: #f6f6f6;
   display: block;
@@ -116,7 +119,7 @@
           }
           .nav-link{
             @include summaryFont(14px,'Roboto',500,1);
-            text-decoration: underline;
+            text-decoration: underline !important;
           }
         }
 

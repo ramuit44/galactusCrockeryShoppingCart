@@ -6,7 +6,7 @@ shoppingCartApp.directive('checkoutPopup', ["$compile","$document","productServi
         popupOpen: '='
    			
 	},
-    templateUrl:'checkoutPopup/checkoutPopup.html',
+    templateUrl:'app_components/checkoutPopup/checkoutPopup.html',
     link: function(scope, iElem, iAttr){
 
        scope.getTotal = function(){

@@ -1,7 +1,7 @@
 <div ng-repeat="product in products" class="cart-item">
 
   <img src="images/{{product.image}}">
-  <a class="remove-icon noselect removeProductCheckoutPoup" href="#" title="Remove"
+  <a class="remove-icon noselect removeProductCheckoutPoup" title="Remove"
           ng-click="removeProductFromCart(product.id)">X</a>
   <p class="strong">
     {{product.title}}</p>

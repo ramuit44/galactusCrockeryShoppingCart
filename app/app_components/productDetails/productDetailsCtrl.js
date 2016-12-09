@@ -10,7 +10,7 @@ shoppingCartApp.controller('shoppingCartProductDeatilsCtrl', ['$scope','$statePa
 
  					}
  				}
-	}
+	};
 
 	$scope.init();
 

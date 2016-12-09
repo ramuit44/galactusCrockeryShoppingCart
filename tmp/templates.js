@@ -1,7 +1,7 @@
-angular.module('templates-main', ['category/categoryHome.html', 'checkoutPopup/checkoutPopup.html', 'header/header.html', 'index.html', 'productDetails/productDetails.html', 'productThumbNail/productThumbNail.html', 'shoppingCartSummary/summary.html']);
+angular.module('templates-main', ['app_components/category/categoryHome.html', 'app_components/checkoutPopup/checkoutPopup.html', 'app_components/header/header.html', 'app_components/productDetails/productDetails.html', 'app_components/productThumbNail/productThumbNail.html', 'app_components/shoppingCartSummary/summary.html']);
 
-angular.module("category/categoryHome.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("category/categoryHome.html",
+angular.module("app_components/category/categoryHome.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/category/categoryHome.html",
     "<div  class=\"header-container\">\n" +
     "\n" +
     "  <div class=\"textblock\">\n" +
@@ -31,12 +31,12 @@ angular.module("category/categoryHome.html", []).run(["$templateCache", function
     "</div>");
 }]);
 
-angular.module("checkoutPopup/checkoutPopup.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("checkoutPopup/checkoutPopup.html",
+angular.module("app_components/checkoutPopup/checkoutPopup.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/checkoutPopup/checkoutPopup.html",
     "<div ng-repeat=\"product in products\" class=\"cart-item\">\n" +
     "\n" +
     "  <img src=\"images/{{product.image}}\">\n" +
-    "  <a class=\"remove-icon noselect removeProductCheckoutPoup\" href=\"#\" title=\"Remove\"\n" +
+    "  <a class=\"remove-icon noselect removeProductCheckoutPoup\" title=\"Remove\"\n" +
     "          ng-click=\"removeProductFromCart(product.id)\">X</a>\n" +
     "  <p class=\"strong\">\n" +
     "    {{product.title}}</p>\n" +
@@ -73,8 +73,8 @@ angular.module("checkoutPopup/checkoutPopup.html", []).run(["$templateCache", fu
     "");
 }]);
 
-angular.module("header/header.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("header/header.html",
+angular.module("app_components/header/header.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/header/header.html",
     "<nav class=\"navbar\">\n" +
     "\n" +
     "  <div class=\"logo-container\">\n" +
@@ -126,45 +126,8 @@ angular.module("header/header.html", []).run(["$templateCache", function($templa
     "");
 }]);
 
-angular.module("index.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("index.html",
-    "<!doctype html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "  <meta charset=\"utf-8\">\n" +
-    "  <title>Storefront</title>\n" +
-    "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-    "  <link rel=\"stylesheet\" type=\"text/css\" href=\"bower_components/font-awesome/css/font-awesome.min.css\"/>\n" +
-    "  <link rel=\"stylesheet\" type=\"text/css\" href=\"../dist/app.css\"/>\n" +
-    "  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>\n" +
-    "  <link href=\"https://fonts.googleapis.com/css?family=Merriweather\" rel=\"stylesheet\" type='text/css'>\n" +
-    "  <script type=\"text/javascript\" src=\"bower_components/angular/angular.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"bower_components/angular-sanitize/angular-sanitize.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"bower_components/angular-ui-router/release/angular-ui-router.min.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"app.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"services/productService.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"productDetails/productDetailsCtrl.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"shoppingCartSummary/summaryCtrl.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"header/headerComponent.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"productThumbNail/productThumbNailComponent.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"checkoutPopup/checkoutPopupComponent.js\"></script>\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "\n" +
-    "</head>\n" +
-    "<body ng-app=\"shoppingCartApp\" ng-controller=\"shoppingCartAppCtrl\">\n" +
-    "  <shopping-cart-header></shopping-cart-header>\n" +
-    "  <div class=\"content\">\n" +
-    "    <div ui-view></div>\n" +
-    "  </div>\n" +
-    "</body>\n" +
-    "</html>\n" +
-    "");
-}]);
-
-angular.module("productDetails/productDetails.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("productDetails/productDetails.html",
+angular.module("app_components/productDetails/productDetails.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/productDetails/productDetails.html",
     "<div class=\"container\">\n" +
     "\n" +
     "  <div class=\"row\">\n" +
@@ -210,8 +173,8 @@ angular.module("productDetails/productDetails.html", []).run(["$templateCache", 
     "");
 }]);
 
-angular.module("productThumbNail/productThumbNail.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("productThumbNail/productThumbNail.html",
+angular.module("app_components/productThumbNail/productThumbNail.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/productThumbNail/productThumbNail.html",
     "<div class=\"image-container\">\n" +
     "  <img class=\"productBox\" src=\"images/{{product.image}}\" alt=\"{{product.title}}\">\n" +
     "  <div class=\"overlay\">\n" +
@@ -227,8 +190,8 @@ angular.module("productThumbNail/productThumbNail.html", []).run(["$templateCach
     "");
 }]);
 
-angular.module("shoppingCartSummary/summary.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("shoppingCartSummary/summary.html",
+angular.module("app_components/shoppingCartSummary/summary.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("app_components/shoppingCartSummary/summary.html",
     "<div class=\"summaryPage\">\n" +
     "    <div class=\"container\">\n" +
     "      <div class=\"row subtitle\">\n" +
@@ -288,8 +251,7 @@ angular.module("shoppingCartSummary/summary.html", []).run(["$templateCache", fu
     "\n" +
     "            <tr ng-if = \"selectedProducts.length === 0\">\n" +
     "              <td colspan=\"4\" class=\"cart-empty-text\">\n" +
-    "                <h5>Your shopping cart is empty.</h5>\n" +
-    "                <p><a class=\"nav-link\" ui-sref=\"category\">Continue Shopping</a></p>\n" +
+    "                <h5>Empty Cart</h5>\n" +
     "              </td>\n" +
     "            </tr>\n" +
     "\n" +
