@@ -1,4 +1,4 @@
-angular.module('templates-main', ['category/categoryHome.html', 'checkoutPopup/checkoutPopup.html', 'header/header.html', 'index.html', 'productDetails/productDetails.html', 'productThumbNail/productThumbNail.html']);
+angular.module('templates-main', ['category/categoryHome.html', 'checkoutPopup/checkoutPopup.html', 'header/header.html', 'index.html', 'productDetails/productDetails.html', 'productThumbNail/productThumbNail.html', 'shoppingCartSummary/summary.html']);
 
 angular.module("category/categoryHome.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("category/categoryHome.html",
@@ -36,7 +36,7 @@ angular.module("checkoutPopup/checkoutPopup.html", []).run(["$templateCache", fu
     "<div ng-repeat=\"product in products\" class=\"cart-item\">\n" +
     "\n" +
     "  <img src=\"images/{{product.image}}\">\n" +
-    "  <a class=\"remove-icon noselect\" href=\"#\" title=\"Remove\"\n" +
+    "  <a class=\"remove-icon noselect removeProductCheckoutPoup\" href=\"#\" title=\"Remove\"\n" +
     "          ng-click=\"removeProductFromCart(product.id)\">X</a>\n" +
     "  <p class=\"strong\">\n" +
     "    {{product.title}}</p>\n" +
@@ -55,13 +55,13 @@ angular.module("checkoutPopup/checkoutPopup.html", []).run(["$templateCache", fu
     "  <br>\n" +
     "</div>\n" +
     "\n" +
-    "<div class=\"actions\">\n" +
+    "<div class=\"actionsProductCheckoutPoup\">\n" +
     "  <div>\n" +
     "    <p class=\"pull-right\">{{getTotal() | currency:USD}}</p>\n" +
     "    <p>Total</p>\n" +
     "   \n" +
     "  </div>\n" +
-    "  <a class=\"button\" routerLink=\"/cart\" (click)=\"close($event)\">View Cart</a>\n" +
+    "  <a class=\"button\" ui-sref=\"summary\">View Cart</a>\n" +
     "  <button class=\"button-primary u-pull-right\"\n" +
     "    [disabled]=\"products.length === 0\"\n" +
     "    (click)=\"checkout()\">Checkout</button>\n" +
@@ -87,7 +87,7 @@ angular.module("header/header.html", []).run(["$templateCache", function($templa
     "      <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n" +
     "    </a>-->\n" +
     "\n" +
-    "    <a class=\"nav-link hidden-phone\" ng-click=\"isCheckoutPopupOpen = !isCheckoutPopupOpen\">\n" +
+    "    <a class=\"nav-link hidden-phone checkoutPopupOpener\" ng-click=\"isCheckoutPopupOpen = !isCheckoutPopupOpen\">\n" +
     "      MY CART ({{getTotalCountOfProductsAddedToCart()}})\n" +
     "      <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i>\n" +
     "    </a>\n" +
@@ -142,12 +142,14 @@ angular.module("index.html", []).run(["$templateCache", function($templateCache)
     "  <script type=\"text/javascript\" src=\"bower_components/angular-sanitize/angular-sanitize.js\"></script>\n" +
     "  <script type=\"text/javascript\" src=\"bower_components/angular-ui-router/release/angular-ui-router.min.js\"></script>\n" +
     "  <script type=\"text/javascript\" src=\"app.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"productDetails/productDetailsCtrl.js\"></script>\n" +
     "  <script type=\"text/javascript\" src=\"services/productService.js\"></script>\n" +
+    "  <script type=\"text/javascript\" src=\"productDetails/productDetailsCtrl.js\"></script>\n" +
+    "  <script type=\"text/javascript\" src=\"shoppingCartSummary/summaryCtrl.js\"></script>\n" +
     "  <script type=\"text/javascript\" src=\"header/headerComponent.js\"></script>\n" +
     "  <script type=\"text/javascript\" src=\"productThumbNail/productThumbNailComponent.js\"></script>\n" +
     "  <script type=\"text/javascript\" src=\"checkoutPopup/checkoutPopupComponent.js\"></script>\n" +
-    "  <script type=\"text/javascript\" src=\"checkoutPopup/toggleClassComponent.js\"></script>\n" +
+    "\n" +
+    "\n" +
     "\n" +
     "\n" +
     "</head>\n" +
@@ -223,4 +225,103 @@ angular.module("productThumbNail/productThumbNail.html", []).run(["$templateCach
     "<p class=\"brand\">{{product.price | currency}}</p>\n" +
     "<br/>\n" +
     "");
+}]);
+
+angular.module("shoppingCartSummary/summary.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("shoppingCartSummary/summary.html",
+    "<div class=\"summaryPage\">\n" +
+    "    <div class=\"container\">\n" +
+    "      <div class=\"row subtitle\">\n" +
+    "        <h1>Shopping Cart</h1>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"container content-table\">\n" +
+    "      <div class=\"row\">\n" +
+    "        <table >\n" +
+    "          <thead ng-if=\"selectedProducts.length > 0\">\n" +
+    "            <tr>\n" +
+    "              <th>Product</th>\n" +
+    "              <th>Quantity</th>\n" +
+    "              <th>Total</th>\n" +
+    "              <th>Action</th>\n" +
+    "            </tr>\n" +
+    "          </thead>\n" +
+    "          <tbody>\n" +
+    "\n" +
+    "            <!-- Products -->\n" +
+    "            <tr ng-repeat=\"product in selectedProducts\" class=\"productRow\">\n" +
+    "\n" +
+    "              <!-- Product details -->\n" +
+    "              <td class=\"product-details\">\n" +
+    "                <img src=\"images/{{product.image}}\">\n" +
+    "                <p class=\"brand\" title=\"{{product.brand}}\">\n" +
+    "                  {{product.brand}}</p>\n" +
+    "                <p class=\"title\" title=\"{{product.title}}\">\n" +
+    "                  {{product.title}}</p>\n" +
+    "              </td>\n" +
+    "\n" +
+    "              <!-- Quantity -->\n" +
+    "              <td>\n" +
+    "                 \n" +
+    "                      <div class=\"incrdcr\">\n" +
+    "                        <div class=\"number noselect\"> {{product.count}} </div>\n" +
+    "                          <div  class=\"actions\">\n" +
+    "                            <div class=\"noselect\" ng-click=\"incrementProductQty(product)\">+</div>\n" +
+    "                            <div class=\"noselect\" ng-click=\"decrementProductQty(product)\" >-</div>\n" +
+    "                        </div>\n" +
+    "                     </div> \n" +
+    "                 \n" +
+    "\n" +
+    "              </td>\n" +
+    "\n" +
+    "              <!-- Price -->\n" +
+    "              <td class=\"price\">{{product.price*product.count | currency:USD}}</td>\n" +
+    "\n" +
+    "              <!-- Actions -->\n" +
+    "              <td>\n" +
+    "                <a class=\"prod-remove-icon noselect removeProductCheckoutPoup\" title=\"Remove\"\n" +
+    "                    ng-click=\"removeProdFromCart(product.id)\">X</a>\n" +
+    "              </td>\n" +
+    "\n" +
+    "            </tr>\n" +
+    "\n" +
+    "            <tr ng-if = \"selectedProducts.length === 0\">\n" +
+    "              <td colspan=\"4\" class=\"cart-empty-text\">\n" +
+    "                <h5>Your shopping cart is empty.</h5>\n" +
+    "                <p><a class=\"nav-link\" ui-sref=\"category\">Continue Shopping</a></p>\n" +
+    "              </td>\n" +
+    "            </tr>\n" +
+    "\n" +
+    "\n" +
+    "            <!-- Summary -->\n" +
+    "            <tr class=\"summary\">\n" +
+    "              <td colspan=\"2\">\n" +
+    "                <p class=\"overviewContent\">CART OVERVIEW</p>\n" +
+    "                <p class=\"overviewContent\">SUBTOTAL</p>\n" +
+    "                <p class=\"overviewContent\">TOTAL</p>\n" +
+    "              </td>\n" +
+    "              <td colspan=\"2\">\n" +
+    "                <p class=\"overviewMetrics\">&nbsp;</p>\n" +
+    "                <p class=\"overviewMetrics\">{{getTotal() | currency:USD}}</p>\n" +
+    "                <p class=\"total\">{{getTotal() | currency:USD}} CAD</p>\n" +
+    "              </td>\n" +
+    "            </tr>\n" +
+    "\n" +
+    "\n" +
+    "            <!-- Footer Buttons -->\n" +
+    "            <tr class=\"footer-actions\">\n" +
+    "              <td colspan=\"2\">\n" +
+    "                <a class=\"nav-link\" ui-sref=\"category\">Continue Shopping</a>\n" +
+    "              </td>\n" +
+    "              <td colspan=\"2\">\n" +
+    "                <button class=\"button-primary\">Checkout ({{getTotal() | currency:USD}})</button>\n" +
+    "              </td>\n" +
+    "            </tr>\n" +
+    "\n" +
+    "          </tbody>\n" +
+    "        </table>\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "</div>");
 }]);

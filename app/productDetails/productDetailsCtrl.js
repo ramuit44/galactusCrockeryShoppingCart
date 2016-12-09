@@ -1,4 +1,4 @@
-shoppingCartApp.controller('shoppingCartProductDeatilsCtrl', ['$scope','$stateParams', function($scope,$stateParams) {
+shoppingCartApp.controller('shoppingCartProductDeatilsCtrl', ['$scope','$stateParams','productService', function($scope,$stateParams,productService) {
 
 	$scope.selectedDetailedProduct = {};
 	$scope.qtyValue = 1;
@@ -15,17 +15,14 @@ shoppingCartApp.controller('shoppingCartProductDeatilsCtrl', ['$scope','$statePa
 	$scope.init();
 
 	$scope.decrement = function() {
-             $scope.qtyValue = $scope.qtyValue - 1;
-            if ($scope.qtyValue < 1){
-              $scope.qtyValue = 1;
-           }
+            $scope.qtyValue = productService.decrementProductQty($scope.qtyValue);
    };
 
       $scope.increment = function() {
-       $scope.qtyValue = $scope.qtyValue + 1;
-};
+        $scope.qtyValue = productService.incrementProductQty($scope.qtyValue);
+	};
 
-		
+
 
  	
  		

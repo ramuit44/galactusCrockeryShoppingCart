@@ -9,6 +9,9 @@ shoppingCartApp.config(['$stateProvider', '$urlRouterProvider', function($stateP
 
     $stateProvider
         .state('product', {url: '/product/:id', params: {id: null} , templateUrl: 'productDetails/productDetails.html', controller: 'shoppingCartProductDeatilsCtrl'});    
+
+    $stateProvider
+        .state('summary', {url: '/summary', templateUrl: 'shoppingCartSummary/summary.html', controller: 'summaryCtrl'});        
        
 }]);
 

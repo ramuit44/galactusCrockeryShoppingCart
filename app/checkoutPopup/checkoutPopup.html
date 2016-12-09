@@ -20,13 +20,13 @@
   <br>
 </div>
 
-<div class="actions">
+<div class="actionsProductCheckoutPoup">
   <div>
     <p class="pull-right">{{getTotal() | currency:USD}}</p>
     <p>Total</p>
    
   </div>
-  <a class="button" routerLink="/cart" (click)="close($event)">View Cart</a>
+  <a class="button" ui-sref="summary">View Cart</a>
   <button class="button-primary u-pull-right"
     [disabled]="products.length === 0"
     (click)="checkout()">Checkout</button>

@@ -20,10 +20,40 @@ shoppingCartApp.service('productService', ["$http", "$filter", "$window", "$q", 
       },
 
 
-      populateModalObjectFromResponse : function(){},
+      getCheckoutProductsPriceTotal : function(checkedoutProducts){
+         var total = 0.00;
+          if(checkedoutProducts.length == 0) return total;
+          for(var k=0;k<checkedoutProducts.length;k++){
+            total = (total+ (checkedoutProducts[k].price * checkedoutProducts[k].count));
+          }
+          return total;
+      },
+
+      removeProductFromCart : function(checkedoutProducts,id){
+        for(var k=0;k<checkedoutProducts.length;k++){
+              if(checkedoutProducts[k].id == id){
+                checkedoutProducts.splice(k, 1);
+
+                 
+              }
+          }
+      },
+
+      decrementProductQty : function(quantity) {
+            quantity = quantity - 1;
+            if (quantity < 1){
+              quantity = 1;
+           }
+
+           return quantity;
+      },
+
+      incrementProductQty : function(quantity) {
+           quantity = quantity + 1;
+           return quantity;
+      }
 
 
-      getCurrentPosition: function() {}
     }
     return service;
 

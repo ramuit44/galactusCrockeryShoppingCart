@@ -1,0 +1,95 @@
+<div class="summaryPage">
+    <div class="container">
+      <div class="row subtitle">
+        <h1>Shopping Cart</h1>
+      </div>
+    </div>
+
+    <div class="container content-table">
+      <div class="row">
+        <table >
+          <thead ng-if="selectedProducts.length > 0">
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- Products -->
+            <tr ng-repeat="product in selectedProducts" class="productRow">
+
+              <!-- Product details -->
+              <td class="product-details">
+                <img src="images/{{product.image}}">
+                <p class="brand" title="{{product.brand}}">
+                  {{product.brand}}</p>
+                <p class="title" title="{{product.title}}">
+                  {{product.title}}</p>
+              </td>
+
+              <!-- Quantity -->
+              <td>
+                 
+                      <div class="incrdcr">
+                        <div class="number noselect"> {{product.count}} </div>
+                          <div  class="actions">
+                            <div class="noselect" ng-click="incrementProductQty(product)">+</div>
+                            <div class="noselect" ng-click="decrementProductQty(product)" >-</div>
+                        </div>
+                     </div> 
+                 
+
+              </td>
+
+              <!-- Price -->
+              <td class="price">{{product.price*product.count | currency:USD}}</td>
+
+              <!-- Actions -->
+              <td>
+                <a class="prod-remove-icon noselect removeProductCheckoutPoup" title="Remove"
+                    ng-click="removeProdFromCart(product.id)">X</a>
+              </td>
+
+            </tr>
+
+            <tr ng-if = "selectedProducts.length === 0">
+              <td colspan="4" class="cart-empty-text">
+                <h5>Your shopping cart is empty.</h5>
+                <p><a class="nav-link" ui-sref="category">Continue Shopping</a></p>
+              </td>
+            </tr>
+
+
+            <!-- Summary -->
+            <tr class="summary">
+              <td colspan="2">
+                <p class="overviewContent">CART OVERVIEW</p>
+                <p class="overviewContent">SUBTOTAL</p>
+                <p class="overviewContent">TOTAL</p>
+              </td>
+              <td colspan="2">
+                <p class="overviewMetrics">&nbsp;</p>
+                <p class="overviewMetrics">{{getTotal() | currency:USD}}</p>
+                <p class="total">{{getTotal() | currency:USD}} CAD</p>
+              </td>
+            </tr>
+
+
+            <!-- Footer Buttons -->
+            <tr class="footer-actions">
+              <td colspan="2">
+                <a class="nav-link" ui-sref="category">Continue Shopping</a>
+              </td>
+              <td colspan="2">
+                <button class="button-primary">Checkout ({{getTotal() | currency:USD}})</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

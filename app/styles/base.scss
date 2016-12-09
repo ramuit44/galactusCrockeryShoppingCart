@@ -281,4 +281,48 @@ input {
 }
 
 
+// Incrementer Decrementer
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+.chkoutcounter{
+  .incrdcr{
+
+        height: 38px;
+        display: inline-block;
+        margin-right: 30px;
+        margin-left: 40px;
+        font-weight:600;
+        font-size:13px;
+      
+      .number, .actions {
+        height: 55px;
+        width: 50px;
+        float: left;
+        text-align: center;
+      }
+      .number {
+        line-height: 55px;
+        background: #eee;
+      }
+      .actions {
+        margin-left: 2px;
+        width: 18px;
+      }
+      .actions div {
+        height: 27px;
+        width: 27px;
+        line-height: 27px;
+        background: #dadada;
+      }
+      .actions div:first-child {
+        margin-bottom: 2px;
+      }
+      .actions div:hover {
+        cursor: pointer;
+        background: #333;
+        color: white;
+      }
+    }
+  }
+
+
 

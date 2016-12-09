@@ -1,4 +1,4 @@
-shoppingCartApp.directive('checkoutPopup', ["$compile","$document", function($compile,$document){
+shoppingCartApp.directive('checkoutPopup', ["$compile","$document","productService", function($compile,$document,productService){
   return {
     restrict:'E',
     scope: {
@@ -10,30 +10,20 @@ shoppingCartApp.directive('checkoutPopup', ["$compile","$document", function($co
     link: function(scope, iElem, iAttr){
 
        scope.getTotal = function(){
-          var total = 0.00;
-          if(scope.products.length == 0) return total;
-          for(var k=0;k<scope.products.length;k++){
-            total = (total+ (scope.products[k].price * scope.products[k].count));
-          }
-          return total;
-       }
+          return productService.getCheckoutProductsPriceTotal(scope.products);
+       };
 
        scope.removeProductFromCart = function(id){
-          for(var k=0;k<scope.products.length;k++){
-              if(scope.products[k].id == id){
-                scope.products.splice(k, 1);
-
-                 
-              }
-          }
-       }
+          productService.removeProductFromCart(scope.products,id);
+       };
 
        
 
        $document.on('click', function (e) {
           var targetClassName = e.target.className;
                    if((targetClassName.indexOf('checkoutPopupOpener') !== -1) || (targetClassName.indexOf('removeProductCheckoutPoup') !== -1) ) return;
-                   if (iElem !== e.target && !iElem[0].contains(e.target)) {
+                   var buttonclickCondition = iElem[0].contains(e.target) && targetClassName === 'button' ;
+                   if ((iElem !== e.target && !iElem[0].contains(e.target)) || buttonclickCondition) {
                         scope.$apply(function () {
                             scope.popupOpen = false;
                         });

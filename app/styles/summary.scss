@@ -1,0 +1,156 @@
+.summaryPage {
+  background: #f6f6f6;
+  display: block;
+
+  @mixin summaryFont($fontSize,$fontFamily,$fontWeight,$opacity) {
+    font-size: $fontSize;
+    font-family: $fontFamily;
+    font-weight: $fontWeight;
+    opacity:$opacity;
+  }
+
+        .subtitle {
+            padding: 2.4em 0;
+            text-align: center;
+            @include summaryFont(32px,'Merriweather',600,1);
+            text-overflow: initial;
+            overflow:visible;
+            white-space: normal;
+        }
+
+        .content-table .row {
+          font-size:80%;
+          background: white;
+        }
+
+
+        /* Table */
+
+      table {
+        width: 90%;
+        margin: 0 auto 3em auto;
+        text-transform: uppercase;
+        border-collapse:collapse;
+
+        .productRow{
+           border-top: solid #e1e1e1 1px;
+        }
+
+        tr:last-child td {
+          border-bottom: none;
+        }
+
+        th, td {
+          padding: 3em 0;
+          text-align: right;
+          font-weight: normal;
+
+          &:first-child {
+            text-align: left;
+          }
+        }
+
+        th {
+          padding-top: 4em;
+          @include summaryFont(13px,'Roboto',600,0.6);
+        }
+
+        td { vertical-align: top; }
+
+        .product-details {
+          padding : 30px 0px 55px 0px;
+          img {
+            width: 110px;
+            float:left;
+            padding-right: 15px;
+          }
+          p {
+            margin-left: 110px;
+            margin-bottom: 0;
+            }
+          .brand{
+             @include summaryFont(12px,'Roboto',600,0.5);
+          } 
+          .title{
+            @include summaryFont(14px,'Roboto',600,1);
+          } 
+
+        }
+
+        .price{
+             @include summaryFont(14px,'Roboto',600,0.5);
+          }
+
+          .overviewContent{
+              @include summaryFont(13px,'Roboto',600 !important,0.5);
+              margin-bottom: 1rem !important;
+          }
+
+         .total{
+            padding-top: 11px;
+            @include summaryFont(14px,'Roboto',600,1);
+         } 
+
+         .overviewMetrics{
+            padding-top:6px;
+            @include summaryFont(13px,'Roboto',600 !important,0.5);
+            margin-bottom: 0px !important;
+         }
+
+
+
+        .summary {
+          border-top: solid #e1e1e1 1px;
+          td:first-child {
+              padding-left: 50%;
+              p {
+                margin-bottom: 2rem;
+              }
+            }
+        }
+
+        .footer-actions{
+          border-top: solid #e1e1e1 1px;
+          button {
+            height:44px;
+          }
+          .nav-link{
+            @include summaryFont(14px,'Roboto',500,1);
+            text-decoration: underline;
+          }
+        }
+
+        td.cart-empty-text {
+          padding: 4em 0;
+          text-align: center;
+        }
+
+        .prod-remove-icon {
+            font-size: 25px;
+            font-weight: 500;
+            color: black;
+            text-decoration: none;
+            opacity:0.3;
+        }
+
+        .prod-remove-icon:hover {
+              opacity:1;
+              cursor:pointer;
+        }
+      }
+
+     .invisible {
+        color:white;
+     }
+
+    @extend .chkoutcounter;
+
+    .incrdcr{
+      margin-right:0px;
+    }
+
+}
+
+
+
+
