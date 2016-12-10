@@ -77,7 +77,7 @@ After the server is running you can use below URL's for testing
  
 
 ## Components 
-I have based the architecture of this app basing on componentized programming design principle. The idea is to have a input configurable resuable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created and used the below 3 components for this app. I have used angular with its mv* framework to develop these components as angular directives.Each directive has its own template and its own isolated scope/model and functionality within its link function.
+I have designed this app basing on componentization programming design principle. The idea is to have a input configurable resuable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created and used the below 3 components for this app. I have used angular with its mv* framework to develop these components as angular directives.Each directive has its own template and its own isolated scope/model and functionality within its link function. The unit testing of these components will be extremely easy.
 
 * <h4> Header Component</h4>
 <p> Component for displaying header in the SPA . It includes the link for checkout cart popup</p>
@@ -117,19 +117,12 @@ I have based the architecture of this app basing on componentized programming de
       $stateProvider
           .state('summary', {url: '/summary', templateUrl: 'app_components/shoppingCartSummary/summary.html', controller: 'summaryCtrl'}); }]);
    ```
-
-
-* The Widget Editor behaviour is driven using the controller object 'weatherWidgetEditorCtrl' and its scope object. The Widget Editor uses "weather-widget-editor-output" component to list out and display the widget created using the Widget Editor form.
-
-* Each Weather widget component using the input parameters makes call to below two asynch operations for displaying data
-    * navigator.geolocation.getCurrentLocation - for fetching the current long , lat
-    * HTTP GET call to OpenWeatherMap API - for getting the current location weather.
+* The app behaviour is driven using the core controller 'shoppingCartAppCtrl' and its scope object. The 'shoppingCartAppCtrl' is used to add products to the cart , get the Total count of products added to the cart. 
+             *  The product details page behaviour is driven using 'shoppingCartProductDeatilsCtrl'. This controller has methods to populate the selected Product model and to increment and decrement the quantity of the product that we want to 'Add to cart'.
+             * The cart page behaviour is driven using 'summaryCtrl' which has methods to increment the quantity, decrement quantity and get total price of products added to cart. 
+             * Most of the common behaviours like retreiving the list of products, incrementing/decrement the product quantity, getting total price, removing from cart are captured via a common service named 'productService'. The data from the json is retrived via a asynch http call, so the URL can be replaced with real time API endpoint. 
+             
    
-* The requirement is to call  "OpenWeatherMap API" once "navigator.geolocation.getCurrentLocation" is resolved. So for this approch I     took the design pattern of <b>"Promise Chaining"</b>, taking advantage that "then method of a promise returns a new derived promise".
- Consequence : 
-    * We no longer have inline functions as callbacks. 
-    * In fact, we don’t even categorize callbacks as “success” or “failure.” Instead, they are behaviorally specified. That way, we can chain each behavior in different combinations in order to get the deserved result per save request. 
-    * Overall, the readability of the code is greatly improved. And with concise behavioral callbacks, unit testing will be a breeze.   
 
 * Used angular Form validations for performing the userinput validations to the Wiget editor form.
 
