@@ -117,10 +117,10 @@ I have designed this app basing on componentization programming design principle
       $stateProvider
           .state('summary', {url: '/summary', templateUrl: 'app_components/shoppingCartSummary/summary.html', controller: 'summaryCtrl'}); }]);
    ```
-* The app behaviour is driven using the core controller 'shoppingCartAppCtrl' and its scope object. The 'shoppingCartAppCtrl' is used to add products to the cart , get the Total count of products added to the cart. 
-             *  The product details page behaviour is driven using 'shoppingCartProductDeatilsCtrl'. This controller has methods to populate the selected Product model and to increment and decrement the quantity of the product that we want to 'Add to cart'.
-             * The cart page behaviour is driven using 'summaryCtrl' which has methods to increment the quantity, decrement quantity and get total price of products added to cart. 
-             * Most of the common behaviours like retreiving the list of products, incrementing/decrement the product quantity, getting total price, removing from cart are captured via a common service named 'productService'. The data from the json is retrived via a asynch http call, so the URL can be replaced with real time API endpoint. 
+* The app behaviour is driven using the core controller `shoppingCartAppCtrl` and its scope object. The `shoppingCartAppCtrl` is used to add products to the cart , get the Total count of products added to the cart. 
+ *  The product details page behaviour is driven using `shoppingCartProductDeatilsCtrl`. This controller has methods to populate the selected Product model and to increment and decrement the quantity of the product that we want to 'Add to cart'.
+ * The cart page behaviour is driven using `summaryCtrl` which has methods to increment the quantity, decrement quantity and get total price of products added to cart. 
+  * Most of the common behaviours(utility) like retreiving the list of products, incrementing/decrement the product quantity, getting total price, removing from cart are captured via a common service named `productService`. The data from the json is retrived via a asynch http call, so the URL can be replaced with real time API endpoint. 
              
    
 
