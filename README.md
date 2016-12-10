@@ -22,6 +22,11 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
 * This project's jshint configuration is in ./.jshintrc and jshint report is in ./jshint-report .  
 * This project deleiverables are in dist directory.
 
+## Prod Delieverables
+ * dist/galactus-shopping-cart-app.min.js - All the JS, Html Templates included.
+ * dist/app.min.css - All the styles.
+ * dist/index.html - Index.
+
 ## Installation instructions / Building & running
 
 ### Pre requisites:
