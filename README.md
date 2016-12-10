@@ -1,12 +1,10 @@
-# galactusWeatherWidgetFactory
-Editor Factory to create configurable weather widgets. Each Weather widget is built using angular directives, feeded using OpenWeatherMap API and styled uising weather-icons.
+# galactusPlateShoppingCart
+A single page shopping cart online webapplication for shopping awesome vintage crockery.
 
 Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6.2.8
 
 ## Libraries used
-* Angular Js - MV* framework for this SPA for building the custom directives(components) "current-weather" and "weather-widget-editor-output".
-* Bootstrap - For RWD/ grid layoutting and inbuilt base styling of widget editor app and widget directive.
-* Weather-icons from http://erikflowers.github.io/weather-icons  - for stylign weather widget with weather icons
+* Angular Js - MV* framework for this SPA for building the custom directives(components), controllers and services.
 * Bower - package manager for the solution , resolving any required library dependencies.
 * Grunt - Task runner tool for building the project and running app on static server and tests on Karma.
 * Ruby & Compass - In order to use Sass with Grunt and convert scss files to minified css,  Ruby and Compass were required.
