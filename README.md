@@ -79,15 +79,16 @@ After the server is running you can use below URL's for testing
 ## Components Usage
 * <h4> Header Component Usage</h4>
 <p> Component for displaying header of the application along with link for checkout cart popup</p>
-```html
-<shopping-cart-header></shopping-cart-header>     
-```
+   ```html
+   <shopping-cart-header></shopping-cart-header>     
+   ```
 
 * <h4> Product Thumbnail Component Usage</h4>
 <p> Component for displaying product details like product name, price and image as tile. Hovering over one of the product tiles it displays an overlay prompting the user to Add to Cart or View Details. Functionality of the hovering buttons is also embeded into this component.</p>
 ```html
  <product-thumb-nail product="product" add-to-cart-click="addProductToCart(productid)"></product-thumb-nail>
-```Where product is the product Object with which the tile is populated.
+```
+Where product is the product Object with which the tile is populated.
 And add-to-cart-click property is used to specify the callback method which is called on click of Add to Cart button.
 
 * <h4> Checkout Component Usage</h4>
