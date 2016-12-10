@@ -34,9 +34,7 @@ checkout-popup {
   max-height:600px;
   overflow-y:auto;
 
-   opacity: 1 !important;
-
-
+  
   transition: opacity .4s ease-out;
 
   /* Starts hidden by default */
@@ -44,6 +42,8 @@ checkout-popup {
   opacity: 0;
 
   @extend .checkoutParagraph;
+
+  
 }
 
 /*.menu-container {
@@ -57,6 +57,8 @@ checkout-popup {
 checkout-popup.active{
     top: 100%;
     opacity: 1 !important;
+    z-index: 10; /* keep on top of other elements on the page */
+    box-shadow: 0 9999px 0 9999px rgba(0,0,0,0.5);
   }
 
 

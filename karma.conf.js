@@ -6,6 +6,7 @@ module.exports = function(config) {
     // base path, that will be used to resolve files and exclude
     basePath: 'app/',
 
+    
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
 
@@ -17,13 +18,15 @@ module.exports = function(config) {
       {pattern: 'bower_components/jquery/dist/jquery.min.js', included: true},
       {pattern: 'bower_components/angular-sanitize/angular-sanitize.js', included: true},
       {pattern: 'bower_components/moment/moment.js', included: true},
+      {pattern: 'bower_components/angular-ui-router/release/angular-ui-router.min.js', included: true},
+      {pattern: '../node_modules/karma-read-json/karma-read-json.js', included: true},
       
-      'galactus-weather-widget-directive.js',
+      
+      'dataStore/*.json',
+      '../tmp/templates.js',
       'app.js',
-      'galactus-weather-widget-editor-output-directive.js',
-
-      
-      '../test/mock/**/*.js',
+      'services/*.js',
+      'app_components/*/*.js',
       '../test/spec/**/*.js',
       'templates/*.html'
     ],
@@ -35,6 +38,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
        '*.js': ['coverage'],
+       'app_components/*/*.js': ['coverage'],
         "templates/*.html": "ng-html2js"
     },
 
@@ -66,7 +70,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Safari'],
+    browsers: ['Chrome'],
     singleRun: true,
 
     // browsers: ['Chrome'],

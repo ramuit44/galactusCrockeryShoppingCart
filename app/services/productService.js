@@ -3,6 +3,8 @@ shoppingCartApp.service('productService', ["$http", "$filter", "$window", "$q", 
     var service = {
       
       products: [],
+
+      productsUrl : 'dataStore/products.json',
      
       getProducts: function() {
 
@@ -10,7 +12,7 @@ shoppingCartApp.service('productService', ["$http", "$filter", "$window", "$q", 
 
         var defer = $q.defer();
 
-        $http.get('dataStore/products.json').then(function(response) {
+        $http.get(this.productsUrl).then(function(response) {
             defer.resolve(response.data);
         }, function(response) {
             defer.reject(response);

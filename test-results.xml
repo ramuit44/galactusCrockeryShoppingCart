@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 54.0.2840 (Windows 8.1)" package="" timestamp="2016-12-10T03:53:28" id="0" hostname="AUSMEL129867L" tests="7" errors="0" failures="0" time="0.165">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"/>
+    </properties>
+    <testcase name="test availiable products length " time="0.04" classname="Chrome 54.0.2840 (Windows 8.1).Controller : shoppingCartAppCtrl"/>
+    <testcase name="test selected products length " time="0.016" classname="Chrome 54.0.2840 (Windows 8.1).Controller : shoppingCartAppCtrl"/>
+    <testcase name="test checkout-popup " time="0.049" classname="Chrome 54.0.2840 (Windows 8.1).Controller : shoppingCartAppCtrl"/>
+    <testcase name="test Product Details Controller " time="0.012" classname="Chrome 54.0.2840 (Windows 8.1).Controller : shoppingCartAppCtrl"/>
+    <testcase name="test Header Component " time="0.017" classname="Chrome 54.0.2840 (Windows 8.1).Controller : shoppingCartAppCtrl"/>
+    <testcase name="test Product Thumb Nail Component" time="0.019" classname="Chrome 54.0.2840 (Windows 8.1).Controller : shoppingCartAppCtrl"/>
+    <testcase name="test Summary Controller" time="0.012" classname="Chrome 54.0.2840 (Windows 8.1).Controller : shoppingCartAppCtrl"/>
+    <system-out><![CDATA[
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>

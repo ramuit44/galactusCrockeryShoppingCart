@@ -62,7 +62,8 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  color: #3b3d38; }
+  color: #3b3d38;
+  background-image: url("images/whitebck.jpg") !important; }
 
 nav {
   font-size: 13px;
@@ -92,10 +93,6 @@ hr {
 
 .bodyNoScroll {
   overflow: hidden !important; }
-  .bodyNoScroll .content {
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-    z-index: 5; }
 
 .button,
 button {
@@ -294,7 +291,8 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  color: #3b3d38; }
+  color: #3b3d38;
+  background-image: url("images/whitebck.jpg") !important; }
 
 nav {
   font-size: 13px;
@@ -324,10 +322,6 @@ hr {
 
 .bodyNoScroll {
   overflow: hidden !important; }
-  .bodyNoScroll .content {
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-    z-index: 5; }
 
 .button,
 button {
@@ -701,7 +695,8 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  color: #3b3d38; }
+  color: #3b3d38;
+  background-image: url("images/whitebck.jpg") !important; }
 
 nav {
   font-size: 13px;
@@ -731,10 +726,6 @@ hr {
 
 .bodyNoScroll {
   overflow: hidden !important; }
-  .bodyNoScroll .content {
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-    z-index: 5; }
 
 .button,
 button {
@@ -1028,7 +1019,6 @@ checkout-popup {
   background: white;
   max-height: 600px;
   overflow-y: auto;
-  opacity: 1 !important;
   transition: opacity .4s ease-out;
   /* Starts hidden by default */
   top: -1000px;
@@ -1042,7 +1032,10 @@ checkout-popup {
 }*/
 checkout-popup.active {
   top: 100%;
-  opacity: 1 !important; }
+  opacity: 1 !important;
+  z-index: 10;
+  /* keep on top of other elements on the page */
+  box-shadow: 0 9999px 0 9999px rgba(0, 0, 0, 0.5); }
 
 .cart-item {
   margin-bottom: 1.5em;
@@ -1291,7 +1284,8 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  color: #3b3d38; }
+  color: #3b3d38;
+  background-image: url("images/whitebck.jpg") !important; }
 
 nav {
   font-size: 13px;
@@ -1321,10 +1315,6 @@ hr {
 
 .bodyNoScroll {
   overflow: hidden !important; }
-  .bodyNoScroll .content {
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-    z-index: 5; }
 
 .button,
 button {
@@ -1699,7 +1689,8 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  color: #3b3d38; }
+  color: #3b3d38;
+  background-image: url("images/whitebck.jpg") !important; }
 
 nav {
   font-size: 13px;
@@ -1729,10 +1720,6 @@ hr {
 
 .bodyNoScroll {
   overflow: hidden !important; }
-  .bodyNoScroll .content {
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-    z-index: 5; }
 
 .button,
 button {
@@ -2105,7 +2092,8 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  color: #3b3d38; }
+  color: #3b3d38;
+  background-image: url("images/whitebck.jpg") !important; }
 
 nav {
   font-size: 13px;
@@ -2135,10 +2123,6 @@ hr {
 
 .bodyNoScroll {
   overflow: hidden !important; }
-  .bodyNoScroll .content {
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-    z-index: 5; }
 
 .button,
 button {
@@ -2525,7 +2509,8 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  color: #3b3d38; }
+  color: #3b3d38;
+  background-image: url("images/whitebck.jpg") !important; }
 
 nav {
   font-size: 13px;
@@ -2555,10 +2540,6 @@ hr {
 
 .bodyNoScroll {
   overflow: hidden !important; }
-  .bodyNoScroll .content {
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-    z-index: 5; }
 
 .button,
 button {
