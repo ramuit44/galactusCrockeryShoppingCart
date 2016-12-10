@@ -83,6 +83,8 @@ Run `grunt runtests` to run karma tests.
 
 After the server is running you can use below URL's for testing
  * For testing the Galactus Crockery Shopping Cart app - [http://localhost:9005/](http://localhost:9005/)
+ * For testing the Galactus Crockery Shopping Cart app with app localFiles and not with dist deliverables,  run the server using 
+   `grunt runlocal` and this case the URL to test is - [http://localhost:9005/localIndex.html](http://localhost:9005/localIndex.html)
  
 
 ## Components 
