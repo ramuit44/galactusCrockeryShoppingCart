@@ -43,7 +43,7 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
 Run `grunt` to prepare your web assets in the `dist` directory.  The default taks does the following.
  * clean - Clean the existing assets in the dist folder.
  * jshint - Run jshint validation  and create the report.
- * html2js - Covert the component html templates to js and have them added to templateCache using html2js.
+ * html2js - Covert the component html templates to js and have them added to templateCache using html2js.<b>Performance Boost</b>
  * concat:jsDist - Concatenate all the Js files (Controllers, Services and Directives) into a single Js file.
  * concat:cssDist - Concatenate all the style files into single file.
  * ngAnnotate:dist - ngAnnotate to inject dependencies - used for minified files.
@@ -121,15 +121,11 @@ I have designed this app basing on componentization programming design principle
  *  The product details page behaviour is driven using `shoppingCartProductDeatilsCtrl`. This controller has methods to populate the selected Product model and to increment and decrement the quantity of the product that we want to 'Add to cart'.
  * The cart page behaviour is driven using `summaryCtrl` which has methods to increment the quantity, decrement quantity and get total price of products added to cart. 
   * Most of the common behaviours(utility) like retreiving the list of products, incrementing/decrement the product quantity, getting total price, removing from cart are captured via a common service named `productService`. The data from the json is retrived via a asynch http call, so the URL can be replaced with real time API endpoint. 
-             
-   
 
-* Used angular Form validations for performing the userinput validations to the Wiget editor form.
+* I have used css boilerplate code to generate the base scss `base.scss` and imported the base.scss into required component's/page's scss. Each component and page has its own stylesheet thus adhering to concept of componentization.  I have used the concepts of variables, Mixins, extends (Inheritance), Nesting of the `Sass` Preprocessor to have a OOCSS -(Object Oriented CSS).
 
-* Used basic bootstrap classes for styling. Other than styling with weather icons, I didn't need the feel to add any further styling like additonal fonts , colors , animations for the widget editor and widget itself. Please let me know otherwise, infact I can do rich UX page as well.
-
-* Written unit testcase for each and every service methods, directives, filters of the weather widget directive.  Test cases also written for the wrapper directive 'weather-widget-editor-output' and controller methods of the WeatherWidgetEditor. 
-<b>The test code coverage is around 93 %</b>
+* Written unit testcase for each and every service methods, directives, filters and controllers.  
+<h2><b>The test code coverage is around 93 %</b><h2>
 
 
 ## Notes
