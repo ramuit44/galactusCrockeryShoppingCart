@@ -101,6 +101,20 @@ After the server is running you can use below URL's for testing
 
 
 ## Solution Description
+* The storefront consists of three main screens: a category list page, a product details page, and a cart page. So I created 3 different nestedviews(category,product,summary) using UI-Router configuration correspondingly. 
+  ```html
+    shoppingCartApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+      $urlRouterProvider.otherwise('/category');
+
+      $stateProvider
+          .state('category', {url: '/category', templateUrl: 'app_components/category/categoryHome.html'});
+
+      $stateProvider
+          .state('product', {url: '/product/:id', params: {id: null} , templateUrl: 'app_components/productDetails/productDetails.html', controller: 'shoppingCartProductDeatilsCtrl'});    
+
+      $stateProvider
+          .state('summary', {url: '/summary', templateUrl: 'app_components/shoppingCartSummary/summary.html', controller: 'summaryCtrl'}); }]);
+   ```
 * The idea of a widget is to have a input configurable resuable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created a component element called "current-weather" which changes its behaviour(display/functionality) basing on the three different input attributes provided to that element(units, showind,title). I have used angular with its mv* framework to develop this components as angular directives.Each directive has its own template and its own isolated scope/model and functionality within its link function.
 
 *  The "current-weather" directive is wrapped around by another directive called "weather-widget-editor-output".  The functionality of the "weather-widget-editor-output" component:
