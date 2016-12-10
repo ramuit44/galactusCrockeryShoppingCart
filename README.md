@@ -132,7 +132,7 @@ I have designed this app basing on componentization design/programming principle
 
 ## Unit Testing
 Written unit testcase for each and every service methods, directives, filters and controllers.  
-<b style="font-size:28px;color:red;">The test code coverage is around 93 %</b>.
+<b style="font-size:28px;color:red;">The test code coverage is around 97 %</b>.
 You can look through code coverage report in the coverage folder. 
 
 
