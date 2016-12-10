@@ -1,28 +1,28 @@
 # galactusCrockeryShoppingCart
-A single page shopping cart webapplication for shopping some awesome vintage crockery.
+A single page shopping cart web application for shopping some awesome vintage crockery.
 
-Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6.2.8
+Browsers (tested): Chrome - Version 54.0.2840, Firefox 50.0, IE 11.0.9, and Safari 6.2.8
 
 ## Libraries used
-* Angular Js - MV* framework for this SPA for building the custom directives(components), controllers and services.
+* Angular Js - MV* framework for this SPA. Used for building the custom directives (components), controllers and services.
 * Angular's UI.Router Module - Used for changing app views based on state of the application. Used for nested views.
-* Bower - package manager for the solution , resolving any required library dependencies.
+* Bower - package manager for the solution, resolving any required library dependencies.
 * Grunt - Task runner tool for building the project and running app on static server and tests on Karma.
 * Ruby & Compass - In order to use Sass with Grunt and convert scss files to minified css.
 
 ## Code organization
-* This project's sources are located in the app directory.
+* The project's sources are located in the app directory.
   * The required libraries are located in the app/bower_components directory.
-  * The templates of components and thier corresponding directives, controllers are located in app/app_components directory.
+  * The templates of components and their corresponding directives, controllers are located in app/app_components directory.
   * The app's main controller is located in app directory with name app.js.
-  * Each of the component styles are located in the app/styles directory. The base.scss is the base style for all the component styles.
+  * Each of the component styles are located in the app/styles directory. The `base.scss` is the base style for all the component styles.
 * This project's test sources are in the test directory.
   * This project's tests code coverage is in coverage directory.
   * This project's tests result report (grunt-junit-report) is in ./test-results.xml.
 * This project's jshint configuration is in ./.jshintrc and jshint report is in ./jshint-report .  
-* This project deleiverables are in dist directory.
+* This project deliverables are in dist directory.
 
-## Prod Delieverables
+## Prod Deliverables
  * dist/galactus-shopping-cart-app.min.js - All the JS, Html Templates included.
  * dist/app.min.css - All the styles.
  * dist/index.html - Index.
@@ -31,11 +31,11 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
 
 ### Pre requisites:
  * Install npm by installing NodeJs.
- * Install bower using  `npm install -g bower`.
+ * Install bower using `npm install -g bower`.
  * Install grunt-cli globally using `npm install -g grunt-cli`.
  *  In order to use Sass & Compass with Grunt we need Ruby and Compass. 
-     * Ruby by default  comes for linux and Mac OS X environments.
-     * For windows environment Install Ruby using the [Ruby Installer](http://rubyinstaller.org/) and include the {ruby installated directory path}/bin in the path.
+     * Ruby default comes for linux and Mac OS X environments.
+     * For windows environment Install Ruby using the [Ruby Installer](http://rubyinstaller.org/) and include the {ruby installed  directory path}/bin in the path.
      * Install compass using the command `gem install compass`.
 
 ### Preparing
@@ -45,7 +45,7 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
  
 ### Building
 
-Run `grunt` to prepare your web assets in the `dist` directory.  The default taks does the following.
+Run `grunt` to prepare your web assets in the `dist` directory.  The default tasks does the following.
  * clean - Clean the existing assets in the dist folder.
  * jshint - Run jshint validation  and create the report.
  * html2js - Covert the component html templates to js and have them added to templateCache using html2js. <b>Performance Boost</b>
@@ -82,7 +82,7 @@ After the server is running you can use below URL's for testing
  
 
 ## Components 
-I have designed this app basing on componentization design/programming principle. The idea is to have a input configurable resuable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created and used the below 3 components for this app. I have used angular with its mv* framework to develop these components as angular directives.Each directive has its own template and its own isolated scope/model and functionality within its link function. 
+I have designed this app basing on componentization design/programming principle. The idea is to have a input configurable reusable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created and used the below 3 components for this app. I have used angular with its mv* framework to develop these components as angular directives. Each directive has its own template and its own isolated scope/model and functionality within its link function. 
 * <h4> Header Component</h4>
 <p> Component for displaying header in the SPA . It includes the link for checkout cart popup</p>
    ```html
@@ -90,7 +90,7 @@ I have designed this app basing on componentization design/programming principle
    ```
 
 * <h4> Product Thumbnail Component</h4>
- <p> Component for displaying product details like product name, price and image as tile in the Category page. On hovering over one of the product tiles, the component displays an overlay prompting the user to Add to Cart or View Details. On-Click functionality of the hovering buttons is also embeded into this component.</p>
+ <p> Component for displaying product details like product name, price and image as tile in the Category page. On hovering over one of the product tiles, the component displays an overlay prompting the user to Add to Cart or View Details. On-Click functionality of the hovering buttons is also embedded into this component.</p>
   ```html
    <product-thumb-nail product="product" add-to-cart-click="addProductToCart(productid)"></product-thumb-nail>
   ```
@@ -103,11 +103,11 @@ I have designed this app basing on componentization design/programming principle
   <checkout-popup  products="selectedProducts"  popup-open="true"></checkout-popup>
  ```
  Where products is the list of products added to cart.
- And popup-open is boolean parameter based on which the poup is visible or invisible.
+ And popup-open is boolean parameter based on which the popup is visible or invisible.
 
 
 ## Solution Description
-* The storefront consists of three main screens: a category list page, a product details page, and a cart page. So I created 3 different nestedviews(category,product,summary) using UI-Router configuration correspondingly. 
+* The storefront consists of three main screens: a category list page, a product details page, and a cart page. So I created 3 different nested views (category, product, summary) using UI-Router configuration correspondingly. 
   ```html
     shoppingCartApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
       $urlRouterProvider.otherwise('/category');
@@ -124,21 +124,21 @@ I have designed this app basing on componentization design/programming principle
 * The app behaviour is driven using the core controller `shoppingCartAppCtrl` and its scope object. The `shoppingCartAppCtrl` is used to add products to the cart , get the Total count of products added to the cart. 
  *  The product details page behaviour is driven using `shoppingCartProductDeatilsCtrl`. This controller has methods to populate the selected Product model and to increment and decrement the quantity of the product that we want to 'Add to cart'.
  * The cart page behaviour is driven using `summaryCtrl` which has methods to increment the quantity, decrement quantity and get total price of products added to cart. 
-  * Most of the common behaviours(utility) like retreiving the list of products, incrementing/decrement the product quantity, getting total price, removing from cart are captured via a common service named `productService`. The data from the json is retrived via a asynch http call, so the URL can be replaced with real time API endpoint. 
+  * Most of the common behaviours(utility) like retrieving the list of products, incrementing/decrement the product quantity, getting total price, removing from cart are captured via a common service named `productService`. The data from the json is retrieved via a asynch http call, so the URL can be replaced with real time API endpoint. 
 
-* I have used css boilerplate code to generate the base scss `base.scss` and imported the base.scss into required component's/page's scss. Each component and page has its own stylesheet thus adhering to concept of componentization.  I have used the concepts of variables, Mixins, extends (Inheritance), Nesting of the `Sass` Preprocessor to have a OOCSS -(Object Oriented CSS).
+* I have used css boilerplate code to generate the base scss `base.scss` and imported the base.scss into required component's/page's scss. Each component and page has its own stylesheet thus adhering to concept of componentization.  I have used the concepts of variables, Mixins, extends (Inheritance), Nesting of the `Sass` Pre-processor to have a OOCSS -(Object Oriented CSS).
 
 
 
 ## Unit Testing
 Written unit testcase for each and every service methods, directives, filters and controllers.  
 <b style="font-size:28px;color:red;">The test code coverage is around 93 %</b>.
-You can look thorugh code coverage report in the coverage folder. 
+You can look through code coverage report in the coverage folder. 
 
 
 ## Notes to Evaluator
 * Tried to bring the font family, sizes as much closer as possible to the wire frames. It may not exactly match the wireframes. I could capture the font family from the image using tools and use it, but didn't had enough time. 
 * Placed all the scss files in a single folder rather than putting them into their corresponding component/page directories. 
-* This app had scope for animation, I just implemented the behaviour of the diming of the page on display of shopping cart popup. One animation I could think is on "Add to cart", but couldn't implement others becuase of time factor. 
-* All the test specs are written in a single file `app.specs.js`. The specs in the file are modular and are per component/page. Its just that , I couldn't split up the file becuase of time factor. 
+* This app had scope for animation, I just implemented the behaviour of the diming of the page on display of shopping cart popup. One animation I could think is on "Add to cart", but couldn't implement others because of time factor. 
+* All the test specs are written in a single file `app.specs.js`. The specs in the file are modular and are per component/page. It’s  just that, I couldn't split up the file because of time factor. 
 
