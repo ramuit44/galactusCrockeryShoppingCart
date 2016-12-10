@@ -41,13 +41,15 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
 ### Building
 
 Run `grunt` to prepare your web assets in the `dist` directory.  The default taks does the following.
- * Clean the existing assets in the dist folder.
- * Run jshint validation  and create the report/
- * Covert the html templates to js using html2js,
- * ngAnnotate to inject dependencies - used for minified files.
- * concat the required js files. 
- * minify the js files using uglify.
- * minify the css files using cssmin.
+ * clean - Clean the existing assets in the dist folder.
+ * jshint - Run jshint validation  and create the report.
+ * html2js - Covert the component html templates to js and have them added to templateCache using html2js.
+ * concat:jsDist - Concatenate all the Js files (Controllers, Services and Directives) into a single Js file.
+ * concat:cssDist - Concatenate all the style files into single file.
+ * ngAnnotate:dist - ngAnnotate to inject dependencies - used for minified files.
+ * uglify - minify the concatenated js file using uglify.
+ * saas - grunt saas task for compiling scss files into css file.
+ * cssmin - minify the generated css files using cssmin.
  
 
 ### Running
