@@ -5,7 +5,7 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
 
 ## Libraries used
 * Angular Js - MV* framework for this SPA for building the custom directives(components), controllers and services.
-        * Angular UI.Router Module - Used for changing app views based on state of the application. Used for nested views.
+              * Angular UI.Router Module - Used for changing app views based on state of the application. Used for nested views.
 * Bower - package manager for the solution , resolving any required library dependencies.
 * Grunt - Task runner tool for building the project and running app on static server and tests on Karma.
 * Ruby & Compass - In order to use Sass with Grunt and convert scss files to minified css,  Ruby and Compass were required.
