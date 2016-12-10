@@ -76,24 +76,30 @@ After the server is running you can use below URL's for testing
  * For testing the Galactus Crockery Shopping Cart app - [http://localhost:9005/](http://localhost:9005/)
  
 
-## Usage
-<h4> Weather Widget Component Usage</h4>
-<p> Just include assets 'galactus-weather-widget.min.css' and 'galactus-weather-widget-directive.min.js'</p>
+## Components Usage
+* <h4> Header Component Usage</h4>
+<p> Component for displaying header of the application along with link for checkout cart popup</p>
 ```html
-<head>
-...
-<link rel="stylesheet" type="text/css" href="styles/galactus-weather-widget.min.css"/>
-<script type="text/javascript" src="galactus-weather-widget-directive.min.js"></script>
-...
-</head>
-<body ng-app="weatherWidgetModule">
-<h4>Sample Usage of Weather widget component</h4>
-  <current-weather units="imperial"
-              showwind="true"
-              title="A sample Weather widget">
-    </current-weather>
-</body>      
+<shopping-cart-header></shopping-cart-header>     
 ```
+
+* <h4> Product Thumbnail Component Usage</h4>
+<p> Component for displaying product details like product name, price and image as tile. Hovering over one of the product tiles it displays an overlay prompting the user to Add to Cart or View Details. Functionality of the hovering buttons is also embeded into this component.</p>
+```html
+ <product-thumb-nail product="product" add-to-cart-click="addProductToCart(productid)"></product-thumb-nail>
+```
+Where product is the product Object with which the tile is populated.
+And add-to-cart-click property is used to specify the callback method which is called on click of Add to Cart button.
+
+* <h4> Checkout Component Usage</h4>
+<p> Component for displaying checkout popup message on click of cart in the header. The component takes input the list of selected products. On display of the popup, all the window region except the popup is dimmed out to give most focus to the popup.</p>
+```html
+ <checkout-popup  products="selectedProducts"  popup-open="true"></checkout-popup>
+```
+Where products is the list of products added to cart.
+And popup-open is boolean parameter based on which the poup is visible or invisible.
+
+
 ## Solution Description
 * The idea of a widget is to have a input configurable resuable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created a component element called "current-weather" which changes its behaviour(display/functionality) basing on the three different input attributes provided to that element(units, showind,title). I have used angular with its mv* framework to develop this components as angular directives.Each directive has its own template and its own isolated scope/model and functionality within its link function.
 
