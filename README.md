@@ -76,7 +76,9 @@ After the server is running you can use below URL's for testing
  * For testing the Galactus Crockery Shopping Cart app - [http://localhost:9005/](http://localhost:9005/)
  
 
-## Components Usage
+## Components 
+I have based the architecture of this app basing on componentized programming design principle. The idea is to have a input configurable resuable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created and used the below 3 components for this app. I have used angular with its mv* framework to develop these components as angular directives.Each directive has its own template and its own isolated scope/model and functionality within its link function.
+
 * <h4> Header Component</h4>
 <p> Component for displaying header in the SPA . It includes the link for checkout cart popup</p>
    ```html
@@ -115,11 +117,8 @@ After the server is running you can use below URL's for testing
       $stateProvider
           .state('summary', {url: '/summary', templateUrl: 'app_components/shoppingCartSummary/summary.html', controller: 'summaryCtrl'}); }]);
    ```
-* The idea of a widget is to have a input configurable resuable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created a component element called "current-weather" which changes its behaviour(display/functionality) basing on the three different input attributes provided to that element(units, showind,title). I have used angular with its mv* framework to develop this components as angular directives.Each directive has its own template and its own isolated scope/model and functionality within its link function.
 
-*  The "current-weather" directive is wrapped around by another directive called "weather-widget-editor-output".  The functionality of the "weather-widget-editor-output" component:
-    * display the current location weather widget (functionality of current-weather) +  display the code snippet on how to include that widget in html.
-    
+
 * The Widget Editor behaviour is driven using the controller object 'weatherWidgetEditorCtrl' and its scope object. The Widget Editor uses "weather-widget-editor-output" component to list out and display the widget created using the Widget Editor form.
 
 * Each Weather widget component using the input parameters makes call to below two asynch operations for displaying data
