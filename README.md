@@ -77,22 +77,22 @@ After the server is running you can use below URL's for testing
  
 
 ## Components Usage
-* <h4> Header Component Usage</h4>
-<p> Component for displaying header of the application along with link for checkout cart popup</p>
+* <h4> Header Component</h4>
+<p> Component for displaying header in the SPA . It includes the link for checkout cart popup</p>
    ```html
    <shopping-cart-header></shopping-cart-header>     
    ```
 
-* <h4> Product Thumbnail Component Usage</h4>
- <p> Component for displaying product details like product name, price and image as tile. Hovering over one of the product tiles it displays an overlay prompting the user to Add to Cart or View Details. Functionality of the hovering buttons is also embeded into this component.</p>
+* <h4> Product Thumbnail Component</h4>
+ <p> Component for displaying product details like product name, price and image as tile in the Category page. Hovering over one of the product tiles it displays an overlay prompting the user to Add to Cart or View Details. Functionality of the hovering buttons is also embeded into this component.</p>
   ```html
    <product-thumb-nail product="product" add-to-cart-click="addProductToCart(productid)"></product-thumb-nail>
   ```
  Where product is the product Object with which the tile is populated.
  And add-to-cart-click property is used to specify the callback method which is called on click of Add to Cart button.
 
-* <h4> Checkout Component Usage</h4>
-<p> Component for displaying checkout popup message on click of cart in the header. The component takes input the list of selected products. On display of the popup, all the window region except the popup is dimmed out to give most focus to the popup.</p>
+* <h4> Checkout Component</h4>
+<p> Component for displaying checkout popup modal on click of cart in the header in the top right corner. The component takes input the list of selected products. On display of the popup, all the window region except the popup is dimmed out to give utmost focus to the popup.</p>
  ```html
   <checkout-popup  products="selectedProducts"  popup-open="true"></checkout-popup>
  ```
