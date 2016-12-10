@@ -109,7 +109,20 @@ module.exports = function(grunt) {
         options: {
           base: 'dist'
         }
-      }
+      },
+      livereloadlocal: {
+        options: {
+          open: {
+                 target: 'http://localhost:9005/localIndex.html'
+            },
+          base : [
+              '<%= target.app %>',
+              '.'
+            ],
+            
+          }
+        }
+      
     },
     //For now 
     jshint: {
@@ -224,6 +237,26 @@ module.exports = function(grunt) {
       'default',
       'concurrent:server',
       'connect:livereload',
+      'watch'
+    ]);
+
+
+
+
+  });
+
+
+
+  grunt.registerTask('runlocal', function (target) {
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    }
+
+    grunt.task.run([
+      'clean:server',
+      'default',
+      'concurrent:server',
+      'connect:livereloadlocal',
       'watch'
     ]);
 
