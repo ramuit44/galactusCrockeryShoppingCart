@@ -1,5 +1,5 @@
 # galactusCrockeryShoppingCart
-A single page shopping cart online webapplication for shopping awesome vintage crockery.
+A single page shopping cart webapplication for shopping some awesome vintage crockery.
 
 Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6.2.8
 
