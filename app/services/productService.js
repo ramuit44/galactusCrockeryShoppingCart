@@ -1,3 +1,11 @@
+/**
+  * productService Service
+  *
+  * Service for retrieving the list of products,
+  * incrementing/decrement the product quantity, 
+  * getting total price, removing from cart. 
+  */
+
 shoppingCartApp.service('productService', ["$http", "$filter", "$window", "$q", "$timeout", function($http, $filter, $window, $q, $timeout) {
   "use strict";
     var service = {
@@ -12,6 +20,7 @@ shoppingCartApp.service('productService', ["$http", "$filter", "$window", "$q", 
 
         var defer = $q.defer();
 
+        //The data from the json is retrieved via a asynch http call, so the URL can be replaced with real time API endpoint.
         $http.get(this.productsUrl).then(function(response) {
             defer.resolve(response.data);
         }, function(response) {
