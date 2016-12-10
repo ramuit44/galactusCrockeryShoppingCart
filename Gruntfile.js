@@ -59,7 +59,13 @@ module.exports = function(grunt) {
         cwd: '<%= target.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      }
+      },
+      images: {
+        expand:true,
+        cwd:'app/../',
+        src:['images/**'],
+        dest: 'dist/'
+      },
     },
 
     connect: {
