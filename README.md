@@ -13,8 +13,9 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
 ## Code organization
 * This project's sources are located in the app directory.
   * The required libraries are located in the app/bower_components directory.
-  * The widget component html templates are located in the app/templates directory .
-  * The widget component styles are located in the app/styles directory.
+  * The component template and its corresponding directives and controllers are located in app/app_components directory.
+  * The app's main controller is located in app directory with name app.js.
+  * Each of the component styles are located in the app/styles directory. The base.scss is the base style for all the component styles.
 * This project's test sources are in the test directory.
   * This project's tests code coverage is in coverage directory.
   * This project's tests result report (grunt-junit-report) is in ./test-results.xml.
