@@ -132,21 +132,9 @@ Written unit testcase for each and every service methods, directives, filters an
 You can look thorugh code coverage report in the coverage folder. 
 
 
-## Notes
+## Notes to Evaluator
+* Tried to bring the font family, sizes as much closer as possible to the wire frames. It may not exactly match the wireframes. I could capture the font family from the image using tools and use it, but didn't had enough time. 
+* Placed all the scss files in a single folder rather than putting them into their corresponding component/page directories. 
+* This app had scope for animation, I just implemented the behaviour of the diming of the page on display of shopping cart popup. One animation I could think is on "Add to cart", but couldn't implement others becuase of time factor. 
+* All the test specs are written in a single file `app.specs.js`. The specs in the file are modular and are per component/page. Its just I couldn't split up the file becuase of time factor. 
 
-* This app used navigator.geolocation for fetchign the current location latitude and longitude. Please make sure the location settings are enabled in Mac for Safari and in IE 11(internet options) for Windows. 
-
-* For achieving the design pattern of promise chaning , I had to use the `Function.prototype.bind`. But unfortunatley becuase of this,  the corresponding specific test cases when ran with PhantomJS headless browser are failing. This is becuase looks like phanthomJS doesn't support bind ,becuase its built with earlier version of JS engine. I am always ending up with [this](https://github.com/ariya/phantomjs/issues/10522) known phantomjs issue. So suggest to run the karma test cases using either one of the browser(Chrome,ChromeCanary,Firefox,Safari,IE) and not PhantomJS.
-
-* Since there wasn't much styling, I haven't used any OOCSS styling principles with CSS Preprocessors like SAAS (Let me know if you require that :) - can do that as well) and css in the APP is plain simple css. 
-
-* Ideally the directive file 'galactus-weather-widget-directive' should have been splitted into different directives.js files. filters.js file and service.js file.  Since content is minimal I'm having it in single location. Same with the specs , having all the specs in a single location 'main.js'.
-
-* $window.navigator.geolocation.getCurrentPosition is quite an irritating service. The asynch call doesn't have any timeout its infnite. Had to struggle to get the reponse from it by adding different options to the service call . Thanks to my fellow warriors in stackoverflow.
-
-
-## Feedback About the test. 
-It was fun, but certainly with all the designing, coding , grunt tasks, jshints, testing with code coverage of above 90%, documenting every thing it wasn't a task of 2 hrs in my humble opinion. 
-
-<b>It took around 6hrs to complete my test.</b>
- 
