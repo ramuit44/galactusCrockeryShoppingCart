@@ -1,4 +1,4 @@
-# galactusPlateShoppingCart
+# galactusCrockeryShoppingCart
 A single page shopping cart online webapplication for shopping awesome vintage crockery.
 
 Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6.2.8
@@ -8,14 +8,6 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
 * Bower - package manager for the solution , resolving any required library dependencies.
 * Grunt - Task runner tool for building the project and running app on static server and tests on Karma.
 * Ruby & Compass - In order to use Sass with Grunt and convert scss files to minified css,  Ruby and Compass were required.
-
-Here’s how you can get started:
-
-Windows
-
-Install Ruby using the Ruby Installer
-Install Compass. Open command prompt and run the following command:
-gem install compass
 
 ## Code organization
 * This project's sources are located in the app directory.
