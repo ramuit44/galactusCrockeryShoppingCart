@@ -3,6 +3,8 @@ A single page shopping cart web application for shopping some awesome vintage cr
 
 Browsers (tested): Chrome - Version 54.0.2840, Firefox 50.0, IE 11.0.9, and Safari 6.2.8
 
+ [https://ramuit44.github.io/galactusCrockeryShoppingCart](https://ramuit44.github.io/galactusCrockeryShoppingCart).
+
 ## Libraries used
 * Angular Js - MV* framework for this SPA. Used for building the custom directives (components), controllers and services.
 * Angular's UI.Router Module - Used for changing app views based on state of the application. Used for nested views.
@@ -26,6 +28,8 @@ Browsers (tested): Chrome - Version 54.0.2840, Firefox 50.0, IE 11.0.9, and Safa
  * dist/galactus-shopping-cart-app.min.js - All the JS, Html Templates included.
  * dist/app.min.css - All the styles.
  * dist/index.html - Index.
+ 
+ Hosted on GitHub pages with prod deliverables - https://ramuit44.github.io/galactusCrockeryShoppingCart
 
 ## Installation instructions / Building & running
 
