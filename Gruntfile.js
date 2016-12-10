@@ -229,8 +229,6 @@ module.exports = function(grunt) {
  grunt.loadNpmTasks('grunt-contrib-sass');
 
   grunt.registerTask('default', ['clean','jshint', 'html2js', 'concat:jsDist','concat:cssDist', 'ngAnnotate:dist', 'uglify', 'copy', 'sass', 'cssmin']);
-  //grunt.registerTask('default', ['clean', 'html2js', 'concat:jsDist', 'ngAnnotate:dist', 'uglify', 'concat:cssDist', 'copy', 'sass', 'cssmin']);
-  //grunt.registerTask('default', ['concat:cssDist' ,'sass']);
-  //grunt.registerTask('default', ['clean','concat:jsDist', 'uglify']);
+  
 
 };

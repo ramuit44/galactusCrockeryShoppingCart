@@ -1,6 +1,18 @@
+
+/**
+  * shoppingCartApp Module
+  *
+  * Angular module app for the Shopping cart application.
+  */
 var shoppingCartApp = angular.module("shoppingCartApp",[ "templates-main","ui.router"]);
 
 
+
+/**
+  * shoppingCartApp Configuration
+  *
+  * UI-router configuration of states for 3 pages - category list page, a product details page, and a cart page.
+  */
 shoppingCartApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/category');
     
@@ -16,6 +28,11 @@ shoppingCartApp.config(['$stateProvider', '$urlRouterProvider', function($stateP
 }]);
 
 
+/**
+  * shoppingCartAppCtrl Controller
+  *
+  * Controller with functionality to add products to the cart , get the Total count of products added to the cart.
+  */
 shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', function($scope,productService) {
 
  	$scope.availiableProducts = [];
@@ -31,6 +48,7 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
  			}
  		);
 
+ 	// Method to addProduct to the cart.
  	$scope.addProductToCart = function(id,qtyValue){
  		for(var i=0;i<$scope.availiableProducts.length;i++){
  			if($scope.availiableProducts[i].id === id){
@@ -58,7 +76,7 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
  		}
  	};
 
-
+ 	// Method to get total count of products added to the cart including their quantity.
  	$scope.getTotalCountOfProductsAddedToCart = function(){
  		var total = 0;
  		for(var i=0;i<$scope.selectedProducts.length;i++){

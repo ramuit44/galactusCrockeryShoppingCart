@@ -1,3 +1,10 @@
+/**
+  * productThumbNail Controller
+  *
+  * Controller with functionality to display in detail product details and 
+  * increment the  product quantity, decrement product quantity.
+  */
+
 shoppingCartApp.controller('shoppingCartProductDeatilsCtrl', ['$scope','$stateParams','productService', function($scope,$stateParams,productService) {
 
 	$scope.selectedDetailedProduct = {};

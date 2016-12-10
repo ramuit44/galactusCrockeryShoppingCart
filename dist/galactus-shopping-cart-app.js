@@ -1,6 +1,18 @@
+
+/**
+  * shoppingCartApp Module
+  *
+  * Angular module app for the Shopping cart application.
+  */
 var shoppingCartApp = angular.module("shoppingCartApp",[ "templates-main","ui.router"]);
 
 
+
+/**
+  * shoppingCartApp Configuration
+  *
+  * UI-router configuration of states for 3 pages - category list page, a product details page, and a cart page.
+  */
 shoppingCartApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/category');
     
@@ -16,6 +28,11 @@ shoppingCartApp.config(['$stateProvider', '$urlRouterProvider', function($stateP
 }]);
 
 
+/**
+  * shoppingCartAppCtrl Controller
+  *
+  * Controller with functionality to add products to the cart , get the Total count of products added to the cart.
+  */
 shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', function($scope,productService) {
 
  	$scope.availiableProducts = [];
@@ -31,6 +48,7 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
  			}
  		);
 
+ 	// Method to addProduct to the cart.
  	$scope.addProductToCart = function(id,qtyValue){
  		for(var i=0;i<$scope.availiableProducts.length;i++){
  			if($scope.availiableProducts[i].id === id){
@@ -58,7 +76,7 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
  		}
  	};
 
-
+ 	// Method to get total count of products added to the cart including their quantity.
  	$scope.getTotalCountOfProductsAddedToCart = function(){
  		var total = 0;
  		for(var i=0;i<$scope.selectedProducts.length;i++){
@@ -72,6 +90,15 @@ shoppingCartApp.controller('shoppingCartAppCtrl', ['$scope','productService', fu
 }]);
 
 
+
+/**
+  * checkoutPopup Directive
+  *
+  * Component for displaying the checkout popup modal. 
+  * The modal/popup is displayed on click of MyCart link in the header. 
+  * The component takes input the list of products added to the cart. 
+  * On display of the popup, all the window region except the popup is dimmed out to give utmost focus to the popup.
+  */
 
 shoppingCartApp.directive('checkoutPopup', ["$compile","$document","productService", function($compile,$document,productService){
   return {
@@ -93,13 +120,20 @@ shoppingCartApp.directive('checkoutPopup', ["$compile","$document","productServi
        };
 
        
-
+       //Handle all the click eventss
        $document.on('click', function (e) {
           var targetClassName = e.target.className;
+                   //if click is on the Mycart link itself
                    if((targetClassName.indexOf('checkoutPopupOpener') !== -1) || (targetClassName.indexOf('removeProductCheckoutPoup') !== -1) ) return;
+                   
+                   //Condition to check for the click of view cart button ; In this case the popup should be hiddern
+                   // TODO -- Logic ould be refined better to be more generic. 
                    var buttonclickCondition = iElem[0].contains(e.target) && targetClassName === 'button' ;
+
+                   //Check if clicking the element within the same div only, in that case dont hide the popup
                    if ((iElem !== e.target && !iElem[0].contains(e.target)) || buttonclickCondition) {
                         scope.$apply(function () {
+                            //hide the popup
                             scope.popupOpen = false;
                         });
                     }
@@ -109,6 +143,11 @@ shoppingCartApp.directive('checkoutPopup', ["$compile","$document","productServi
 
   };
 }]);
+/**
+  * shoppingCartHeader Directive
+  *
+  * Component to display the header all across the SPA.
+  */
 shoppingCartApp.directive('shoppingCartHeader', ["$compile", function($compile){
   return {
     restrict:'E',
@@ -117,6 +156,13 @@ shoppingCartApp.directive('shoppingCartHeader', ["$compile", function($compile){
      }
   };
 }]);
+/**
+  * productThumbNail Controller
+  *
+  * Controller with functionality to display in detail product details and 
+  * increment the  product quantity, decrement product quantity.
+  */
+
 shoppingCartApp.controller('shoppingCartProductDeatilsCtrl', ['$scope','$stateParams','productService', function($scope,$stateParams,productService) {
 
 	$scope.selectedDetailedProduct = {};
@@ -148,6 +194,14 @@ shoppingCartApp.controller('shoppingCartProductDeatilsCtrl', ['$scope','$statePa
 
 }]);
 
+/**
+  * productThumbNail Directive
+  *
+  * Component for displaying product details like product name, price and image as tile in the Category page. 
+  * On hovering over one of the product tiles, the component displays an overlay prompting the user to Add to Cart or View Details. 
+  * On-Click functionality of the hovering buttons is also embedded into this component.
+  */
+
 shoppingCartApp.directive('productThumbNail', ["$compile", function($compile){
   return {
     restrict:'E',
@@ -166,6 +220,12 @@ shoppingCartApp.directive('productThumbNail', ["$compile", function($compile){
 
   };
 }]);
+/**
+  * summaryCtrl Controller
+  *
+  * Controller with functionality to increment the  product quantity, decrement product quantity and get total price of products added to cart.
+  */
+
 shoppingCartApp.controller('summaryCtrl', ['$scope','productService', function($scope,productService) {
 
 	$scope.decrementProductQty = function(product) {
