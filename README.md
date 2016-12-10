@@ -35,7 +35,7 @@ Browsers (tested): Chrome - Version 54.0.2840, Firefox 50.0, IE 11.0.9, and Safa
  * Install grunt-cli globally using `npm install -g grunt-cli`.
  *  In order to use Sass & Compass with Grunt we need Ruby and Compass. 
      * Ruby default comes for linux and Mac OS X environments.
-     * For windows environment Install Ruby using the [Ruby Installer](http://rubyinstaller.org/) and include the {ruby installed  directory path}/bin in the path.
+     * For windows environment, install Ruby using the [Ruby Installer](http://rubyinstaller.org/) and include the {ruby installed  directory path}/bin in the path.
      * Install compass using the command `gem install compass`.
 
 ### Preparing
