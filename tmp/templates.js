@@ -78,7 +78,7 @@ angular.module("app_components/header/header.html", []).run(["$templateCache", f
     "<nav class=\"navbar\">\n" +
     "\n" +
     "  <div class=\"logo-container\">\n" +
-    "    <a href=\"/\"><img src=\"images/logo.png\" alt=\"Galctus Shopping Cart\"></a>\n" +
+    "    <a ui-sref=\"category\"><img src=\"images/logo.png\" alt=\"Galctus Shopping Cart\"></a>\n" +
     "  </div>\n" +
     "  <div class=\"menu-container\">\n" +
     "\n" +
@@ -106,16 +106,16 @@ angular.module("app_components/header/header.html", []).run(["$templateCache", f
     "\n" +
     "  <ul class=\"main-menu hidden-phone\">\n" +
     "    <li>\n" +
-    "      <a class=\"nav-link\" href=\"/\">HOME</a>\n" +
+    "      <a class=\"nav-link\" ui-sref=\"category\">HOME</a>\n" +
     "    </li>\n" +
     "    <li>\n" +
-    "      <a class=\"nav-link\" href=\"/\">SHOP <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i></a>\n" +
+    "      <a class=\"nav-link\" ui-sref=\"category\">SHOP <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i></a>\n" +
     "    </li>\n" +
     "    <li>\n" +
-    "      <a class=\"nav-link\" href=\"/\">JOURNAL</a>\n" +
+    "      <a class=\"nav-link\" ui-sref=\"category\">JOURNAL</a>\n" +
     "    </li>\n" +
     "    <li>\n" +
-    "      <a class=\"nav-link\" href=\"/\">MORE <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i></a>\n" +
+    "      <a class=\"nav-link\" ui-sref=\"category\">MORE <i class=\"fa fa-caret-down\" aria-hidden=\"true\"></i></a>\n" +
     "    </li>\n" +
     "  </ul>\n" +
     "\n" +
