@@ -124,8 +124,12 @@ I have designed this app basing on componentization programming design principle
 
 * I have used css boilerplate code to generate the base scss `base.scss` and imported the base.scss into required component's/page's scss. Each component and page has its own stylesheet thus adhering to concept of componentization.  I have used the concepts of variables, Mixins, extends (Inheritance), Nesting of the `Sass` Preprocessor to have a OOCSS -(Object Oriented CSS).
 
-* Written unit testcase for each and every service methods, directives, filters and controllers.  
-<b style="font-size:28px;color:red;">The test code coverage is around 93 %</b>
+
+
+## Unit Testing
+Written unit testcase for each and every service methods, directives, filters and controllers.  
+<b style="font-size:28px;color:red;">The test code coverage is around 93 %</b>.
+You can look thorugh code coverage report in the coverage folder. 
 
 
 ## Notes
