@@ -82,8 +82,7 @@ After the server is running you can use below URL's for testing
  
 
 ## Components 
-I have designed this app basing on componentization programming design principle. The idea is to have a input configurable resuable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created and used the below 3 components for this app. I have used angular with its mv* framework to develop these components as angular directives.Each directive has its own template and its own isolated scope/model and functionality within its link function. The unit testing of these components will be extremely easy.
-
+I have designed this app basing on componentization design/programming principle. The idea is to have a input configurable resuable component which changes its behaviour basing on input parameters. This is exactly what I tried as part of the exercise. I have created and used the below 3 components for this app. I have used angular with its mv* framework to develop these components as angular directives.Each directive has its own template and its own isolated scope/model and functionality within its link function. 
 * <h4> Header Component</h4>
 <p> Component for displaying header in the SPA . It includes the link for checkout cart popup</p>
    ```html
