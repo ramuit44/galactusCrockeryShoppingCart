@@ -48,7 +48,7 @@ Browsers(tested) : Chrome - Version 54.0.2840, FireFox 50.0, IE 11.0.9, Safari 6
 Run `grunt` to prepare your web assets in the `dist` directory.  The default taks does the following.
  * clean - Clean the existing assets in the dist folder.
  * jshint - Run jshint validation  and create the report.
- * html2js - Covert the component html templates to js and have them added to templateCache using html2js.<b>Performance Boost</b>
+ * html2js - Covert the component html templates to js and have them added to templateCache using html2js. <b>Performance Boost</b>
  * concat:jsDist - Concatenate all the Js files (Controllers, Services and Directives) into a single Js file.
  * concat:cssDist - Concatenate all the style files into single file.
  * ngAnnotate:dist - ngAnnotate to inject dependencies - used for minified files.
