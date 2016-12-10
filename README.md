@@ -84,7 +84,7 @@ After the server is running you can use below URL's for testing
    ```
 
 * <h4> Product Thumbnail Component</h4>
- <p> Component for displaying product details like product name, price and image as tile in the Category page. Hovering over one of the product tiles it displays an overlay prompting the user to Add to Cart or View Details. Functionality of the hovering buttons is also embeded into this component.</p>
+ <p> Component for displaying product details like product name, price and image as tile in the Category page. On hovering over one of the product tiles, the component displays an overlay prompting the user to Add to Cart or View Details. On-Click functionality of the hovering buttons is also embeded into this component.</p>
   ```html
    <product-thumb-nail product="product" add-to-cart-click="addProductToCart(productid)"></product-thumb-nail>
   ```
@@ -92,7 +92,7 @@ After the server is running you can use below URL's for testing
  And add-to-cart-click property is used to specify the callback method which is called on click of Add to Cart button.
 
 * <h4> Checkout Component</h4>
-<p> Component for displaying checkout popup modal on click of cart in the header in the top right corner. The component takes input the list of selected products. On display of the popup, all the window region except the popup is dimmed out to give utmost focus to the popup.</p>
+<p> Component for displaying the checkout popup modal. The modal/popup is displayed on click of MyCart link in the header. The component takes input the list of products added to the cart. On display of the popup, all the window region except the popup is dimmed out to give utmost focus to the popup.</p>
  ```html
   <checkout-popup  products="selectedProducts"  popup-open="true"></checkout-popup>
  ```
