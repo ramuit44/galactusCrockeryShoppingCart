@@ -84,19 +84,20 @@ After the server is running you can use below URL's for testing
    ```
 
 * <h4> Product Thumbnail Component Usage</h4>
-<p> Component for displaying product details like product name, price and image as tile. Hovering over one of the product tiles it displays an overlay prompting the user to Add to Cart or View Details. Functionality of the hovering buttons is also embeded into this component.</p>
-```html
- <product-thumb-nail product="product" add-to-cart-click="addProductToCart(productid)"></product-thumb-nail>
-```
-Where product is the product Object with which the tile is populated.
-And add-to-cart-click property is used to specify the callback method which is called on click of Add to Cart button.
+ <p> Component for displaying product details like product name, price and image as tile. Hovering over one of the product tiles it displays an overlay prompting the user to Add to Cart or View Details. Functionality of the hovering buttons is also embeded into this component.</p>
+  ```html
+   <product-thumb-nail product="product" add-to-cart-click="addProductToCart(productid)"></product-thumb-nail>
+  ```
+ Where product is the product Object with which the tile is populated.
+ And add-to-cart-click property is used to specify the callback method which is called on click of Add to Cart button.
 
 * <h4> Checkout Component Usage</h4>
 <p> Component for displaying checkout popup message on click of cart in the header. The component takes input the list of selected products. On display of the popup, all the window region except the popup is dimmed out to give most focus to the popup.</p>
-```html
- <checkout-popup  products="selectedProducts"  popup-open="true"></checkout-popup>
-```Where products is the list of products added to cart.
-And popup-open is boolean parameter based on which the poup is visible or invisible.
+ ```html
+  <checkout-popup  products="selectedProducts"  popup-open="true"></checkout-popup>
+ ```
+ Where products is the list of products added to cart.
+ And popup-open is boolean parameter based on which the poup is visible or invisible.
 
 
 ## Solution Description
