@@ -140,5 +140,5 @@ You can look thorugh code coverage report in the coverage folder.
 * Tried to bring the font family, sizes as much closer as possible to the wire frames. It may not exactly match the wireframes. I could capture the font family from the image using tools and use it, but didn't had enough time. 
 * Placed all the scss files in a single folder rather than putting them into their corresponding component/page directories. 
 * This app had scope for animation, I just implemented the behaviour of the diming of the page on display of shopping cart popup. One animation I could think is on "Add to cart", but couldn't implement others becuase of time factor. 
-* All the test specs are written in a single file `app.specs.js`. The specs in the file are modular and are per component/page. Its just I couldn't split up the file becuase of time factor. 
+* All the test specs are written in a single file `app.specs.js`. The specs in the file are modular and are per component/page. Its just that , I couldn't split up the file becuase of time factor. 
 
